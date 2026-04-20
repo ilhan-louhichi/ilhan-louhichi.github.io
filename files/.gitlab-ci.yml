@@ -1,0 +1,46 @@
+stages:
+  - build
+  - test
+  - scan_sast
+  - deploy
+
+variables:
+  IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+
+cache:
+  paths:
+    - .m2/repository
+
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
+  tags:
+    - docker
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - ./scripts/run_tests.sh
+  artifacts:
+    paths:
+      - junit_reports/
+  only:
+    - branches
+
+scan_sast:
+  stage: scan_sast
+  script:
+    - ./security/sast_scan.sh
+  allow_failure: true
+
+deploy:
+  stage: deploy
+  script:
+    - ./scripts/deploy_to_cloud.sh $IMAGE
+  when: manual
+  only:
+    - main

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ilhan-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ilhan-app
+  template:
+    metadata:
+      labels:
+        app: ilhan-app
+    spec:
+      containers:
+      - name: ilhan-app
+        image: registry.example.com/ilhan-app:latest
+        ports:
+        - containerPort: 8080

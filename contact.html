@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ilhan Louhichi — Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+<div class="container">
+
+<nav class="nav">
+  <a class="logo" href="index.html">Ilhan Louhichi</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="about.html">À propos</a></li>
+    <li><a href="experience.html">Expériences</a></li>
+    <li><a href="projects.html">Projets</a></li>
+    <li><a href="veille.html">Veille</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+  <section class="card">
+    <div class="section-title"><div class="pulse"></div><h2>Contact</h2></div>
+    <p>Tu peux me contacter pour toute collaboration, stage ou question technique.</p>
+    <div class="two-col" style="align-items:start">
+      <div>
+        <form class="contact-form" action="#" onsubmit="alert('Formulaire de démonstration — remplacez l'action par un endpoint'); return false;">
+          <input type="text" name="name" placeholder="Ton nom" required>
+          <input type="email" name="email" placeholder="Ton e-mail" required>
+          <textarea name="message" rows="6" placeholder="Ton message..."></textarea>
+          <button class="btn" type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div>
+        <h4>Infos</h4>
+        <p style="color:var(--muted)">Email : <a href="mailto:louhichi.ilhan@gmail.com">louhichi.ilhan@gmail.com</a></p>
+        <p style="color:var(--muted)">Téléphone : 06 40 29 97 05</p>
+        <p style="color:var(--muted)">Adresse : Les Essarts-le-Roi (78)</p>
+      </div>
+    </div>
+  </section>
+
+
+<footer class="site-footer">
+  <div>© 2025 Ilhan Louhichi — Alternant DevOps chez Thales</div>
+  <div><a href="/mnt/data/portfolio_ilhan_louhichi_v2/LOUHICHI_ILHAN_CV (2).pdf" target="_blank">Télécharger le CV (PDF)</a></div>
+</footer>
+
+</div>
+<script src="js/particles.js"></script>
+</body>
+</html>
