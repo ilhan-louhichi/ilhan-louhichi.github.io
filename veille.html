@@ -4,8 +4,112 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Veille Technologique — Ilhan Louhichi</title>
-  <meta name="description" content="Veille technologique sur le Cloud Computing — Ilhan Louhichi, BTS SIO." />
+  <meta name="description" content="Veille technologique approfondie sur le Cloud Computing — Ilhan Louhichi, BTS SIO SISR." />
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .veille-hero {
+      background: linear-gradient(135deg, rgba(26,115,255,0.08), rgba(10,240,255,0.04));
+      border-radius: 18px;
+      padding: 36px;
+      border: 1px solid rgba(10,240,255,0.12);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .veille-hero::before {
+      content: '☁️';
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 8rem;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .veille-hero h1 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .veille-hero p { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 700px; margin-bottom: 0; }
+    .schema-box {
+      background: #040a16;
+      border: 1px solid rgba(10,240,255,0.1);
+      border-radius: 14px;
+      padding: 28px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #7dd3fc;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    .schema-flow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .schema-node {
+      background: rgba(26,115,255,0.1);
+      border: 1px solid rgba(10,240,255,0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: center;
+      min-width: 80px;
+      transition: all .2s;
+    }
+    .schema-node:hover { background: rgba(10,240,255,0.1); transform: translateY(-2px); }
+    .schema-node .node-icon { font-size: 1.3rem; margin-bottom: 4px; }
+    .schema-node .node-label { font-size: 0.75rem; color: var(--neon-2); font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+    .schema-arrow { color: var(--neon-2); font-size: 1.3rem; flex-shrink: 0; }
+    .real-img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 16px 0;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      transition: transform .2s;
+      display: block;
+    }
+    .real-img:hover { transform: scale(1.01); }
+    .img-caption { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: -8px; margin-bottom: 16px; font-style: italic; }
+    .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+    .compare-table th { background: rgba(26,115,255,0.1); color: var(--neon-2); padding: 12px 14px; text-align: left; font-family: 'Syne', sans-serif; font-size: 0.82rem; border-bottom: 1px solid var(--border); }
+    .compare-table td { padding: 10px 14px; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); color: var(--text); }
+    .ok { color: #4ade80 !important; }
+    .mid { color: #facc15 !important; }
+    .bad { color: #f87171 !important; }
+    .quote-block {
+      border-left: 3px solid var(--neon-2);
+      padding: 16px 20px;
+      background: rgba(10,240,255,0.03);
+      border-radius: 0 10px 10px 0;
+      margin: 20px 0;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .quote-block strong { color: var(--neon-2); font-style: normal; }
+    .toc { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px; }
+    .toc h4 { font-family: 'Syne', sans-serif; color: #fff; margin-bottom: 12px; font-size: 0.95rem; }
+    .toc ol { color: var(--muted); font-size: 0.88rem; padding-left: 20px; line-height: 2.2; }
+    .toc a { color: var(--neon-2); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 14px; margin: 20px 0; }
+    .stat-card { background: rgba(26,115,255,0.06); border: 1px solid rgba(26,115,255,0.15); border-radius: 12px; padding: 18px; text-align: center; }
+    .stat-card .stat-num { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--neon-2); }
+    .stat-card .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+    .source-card { padding: 14px; border-radius: 10px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); transition: all .2s; margin-bottom: 10px; }
+    .source-card:hover { border-color: rgba(10,240,255,0.2); }
+    .source-card a { color: var(--neon-2); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+    .source-card p { font-size: 0.78rem; margin: 4px 0 0; }
+    .vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; margin: 16px 0; }
+    .vcard { padding: 18px; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); transition: all .2s; }
+    .vcard:hover { border-color: rgba(10,240,255,0.2); transform: translateY(-3px); }
+    .vcard .vi { font-size: 1.6rem; margin-bottom: 10px; }
+    .vcard h4 { font-family: 'Syne', sans-serif; color: #fff; font-size: 0.95rem; margin-bottom: 6px; }
+    .vcard p { color: var(--muted); font-size: 0.84rem; line-height: 1.5; margin-bottom: 0; }
+  </style>
 </head>
 <body>
 <canvas id="particles-canvas" aria-hidden="true"></canvas>
@@ -23,126 +127,320 @@
     </ul>
   </nav>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>Veille Technologique — Cloud Computing</h2>
+  <div class="veille-hero">
+    <p style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--neon-2);margin-bottom:12px;opacity:0.7;">// veille_technologique.md — BTS SIO SISR 2024-2025</p>
+    <h1>☁️ Veille Technologique<br>Cloud Computing</h1>
+    <p>Dans le cadre de ma formation BTS SIO option SISR et de mon alternance chez <strong style="color:#fff;">Thales</strong>, j'ai réalisé une veille technologique approfondie sur le <strong style="color:#fff;">Cloud Computing</strong>. Cette thématique est au cœur des infrastructures modernes et directement liée à mes missions en tant qu'alternant DevOps.</p>
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+      <span class="chip">📅 2024–2025</span>
+      <span class="chip">🎓 BTS SIO SISR</span>
+      <span class="chip">🏢 Thales</span>
+      <span class="chip">☁️ Cloud & DevOps</span>
     </div>
-    <p>Dans le cadre de ma formation BTS SIO et de mon alternance chez Thales, j'ai choisi de réaliser une veille technologique sur le <strong style="color:#fff;">Cloud Computing</strong>. Cette technologie est aujourd'hui incontournable dans les entreprises modernes, permettant d'héberger des services, stocker des données, sécuriser les infrastructures et automatiser les déploiements.</p>
-  </section>
+  </div>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>📌 Qu'est-ce que le Cloud Computing ?</h2>
-    </div>
-    <p>Le Cloud Computing consiste à utiliser des serveurs distants accessibles via Internet afin de fournir des ressources informatiques à la demande. Il se décline en plusieurs modèles :</p>
+  <div class="toc">
+    <h4>📋 Table des matières</h4>
+    <ol>
+      <li><a href="#definition">Définition du Cloud Computing</a></li>
+      <li><a href="#modeles">Modèles de service : IaaS, PaaS, SaaS</a></li>
+      <li><a href="#fournisseurs">Les grands fournisseurs Cloud</a></li>
+      <li><a href="#tendances">Tendances 2025</a></li>
+      <li><a href="#devops">Cloud & DevOps — Lien avec mon alternance</a></li>
+      <li><a href="#securite">Sécurité dans le Cloud</a></li>
+      <li><a href="#outils">Outils et méthode de veille</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </div>
 
-    <div class="veille-grid">
-      <div class="veille-card">
-        <div class="vc-icon">🖥️</div>
-        <h4>IaaS</h4>
-        <p>Infrastructure as a Service — serveurs virtuels, stockage, réseau à la demande.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">⚙️</div>
-        <h4>PaaS</h4>
-        <p>Platform as a Service — environnements de développement et déploiement managés.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">☁️</div>
-        <h4>SaaS</h4>
-        <p>Software as a Service — applications accessibles directement via le navigateur.</p>
-      </div>
-    </div>
+  <!-- 1. Définition -->
+  <section class="card" id="definition">
+    <div class="section-title"><div class="pulse"></div><h2>1. Définition du Cloud Computing</h2></div>
+    <p>Le <strong style="color:#fff;">Cloud Computing</strong> (informatique en nuage) désigne l'accès à des ressources informatiques — serveurs, stockage, bases de données, réseaux, logiciels — via Internet, à la demande et avec une facturation à l'usage. Plutôt que de posséder et maintenir une infrastructure physique coûteuse, les entreprises louent ces ressources à des fournisseurs spécialisés.</p>
+    <p>Cette approche révolutionne la façon dont les entreprises conçoivent leur SI : plus besoin d'investissements matériels lourds, les ressources sont disponibles en quelques minutes, scalables à la demande et facturées uniquement à l'utilisation.</p>
 
-    <h3>Principaux fournisseurs</h3>
-    <div class="chips">
-      <span class="chip">AWS</span>
-      <span class="chip">Microsoft Azure</span>
-      <span class="chip">Google Cloud Platform</span>
-      <span class="chip">OVHcloud</span>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>🚀 Tendances Cloud 2025</h2>
+    <div class="quote-block">
+      <strong>Selon le NIST (National Institute of Standards and Technology) :</strong><br>
+      "Le cloud computing est un modèle permettant un accès réseau omniprésent, pratique et à la demande à un pool partagé de ressources informatiques configurables qui peuvent être rapidement provisionnées et libérées avec un effort de gestion minimal."
     </div>
 
-    <div class="veille-grid">
-      <div class="veille-card">
-        <div class="vc-icon">🔀</div>
-        <h4>Multi-Cloud</h4>
-        <p>Utilisation simultanée de plusieurs fournisseurs cloud pour éviter les dépendances et optimiser les coûts.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">⚡</div>
-        <h4>Serverless</h4>
-        <p>Exécution de code sans gérer les serveurs — AWS Lambda, Azure Functions, Google Cloud Run.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">🐳</div>
-        <h4>Kubernetes</h4>
-        <p>Orchestration de conteneurs Docker pour des déploiements scalables et résilients.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">📝</div>
-        <h4>Infrastructure as Code</h4>
-        <p>Gestion de l'infrastructure via du code — Terraform, Ansible, Pulumi.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">🔐</div>
-        <h4>Cloud Sécurisé</h4>
-        <p>Zero Trust, IAM, chiffrement bout en bout — la sécurité native au cloud.</p>
-      </div>
-      <div class="veille-card">
-        <div class="vc-icon">🤖</div>
-        <h4>IA dans le Cloud</h4>
-        <p>Services IA hébergés — SageMaker, Azure AI, Vertex AI pour le machine learning.</p>
-      </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">94%</div><div class="stat-label">des entreprises utilisent le cloud en 2025</div></div>
+      <div class="stat-card"><div class="stat-num">$679Md</div><div class="stat-label">marché mondial du cloud en 2024</div></div>
+      <div class="stat-card"><div class="stat-num">3x</div><div class="stat-label">plus rapide à déployer que l'on-premise</div></div>
+      <div class="stat-card"><div class="stat-num">30x</div><div class="stat-label">déploiements plus fréquents avec CI/CD</div></div>
+    </div>
+
+    <h3>☁️ Les 4 types de déploiement Cloud</h3>
+    <div class="vgrid">
+      <div class="vcard"><div class="vi">🌐</div><h4>Cloud Public</h4><p>Infrastructure partagée entre plusieurs entreprises. Exemples : AWS, Azure, GCP. Coût réduit, scalabilité maximale, maintenance assurée par le fournisseur.</p></div>
+      <div class="vcard"><div class="vi">🏢</div><h4>Cloud Privé</h4><p>Infrastructure dédiée à une seule organisation. Meilleure sécurité et contrôle total. Utilisé chez Thales pour les données sensibles de défense.</p></div>
+      <div class="vcard"><div class="vi">🔀</div><h4>Cloud Hybride</h4><p>Combinaison cloud public + privé. Flexibilité maximale : données sensibles en privé, charges variables en public. Tendance dominante en entreprise.</p></div>
+      <div class="vcard"><div class="vi">🤝</div><h4>Multi-Cloud</h4><p>Utilisation simultanée de plusieurs fournisseurs cloud pour éviter les dépendances (vendor lock-in) et optimiser les coûts selon les services.</p></div>
     </div>
   </section>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>🛠 Outils de veille utilisés</h2>
+  <!-- 2. Modèles -->
+  <section class="card" id="modeles">
+    <div class="section-title"><div class="pulse"></div><h2>2. Modèles de service : IaaS, PaaS, SaaS</h2></div>
+    <p>Le Cloud Computing se décline en plusieurs modèles de service, chacun offrant un niveau d'abstraction différent. Plus on monte dans la pile, moins on gère d'infrastructure soi-même, mais moins on a de contrôle.</p>
+
+    <div class="schema-box">
+<pre>┌───────────────────────────────────────────────────────┐
+│  SaaS  │  Logiciel complet accessible en ligne         │  ← Gmail, Salesforce, Slack
+│        │  Tu gères : uniquement l'utilisation          │
+├───────────────────────────────────────────────────────┤
+│  PaaS  │  Environnement de développement managé        │  ← Heroku, App Engine
+│        │  Tu gères : ton code et tes données           │
+├───────────────────────────────────────────────────────┤
+│  IaaS  │  Infrastructure brute (VM, réseau, stockage)  │  ← AWS EC2, Azure VM
+│        │  Tu gères : OS, runtime, apps, données        │
+├───────────────────────────────────────────────────────┤
+│  On-   │  Datacenter physique propre                   │  ← Serveurs maison
+│ Premise│  Tu gères : TOUT (matériel + logiciel)        │
+└───────────────────────────────────────────────────────┘</pre>
     </div>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Modèle</th><th>Tu gères</th><th>Fournisseur gère</th><th>Exemples</th><th>Cas d'usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong style="color:var(--neon-2)">IaaS</strong></td><td>OS, middleware, apps, données</td><td>Réseau, stockage, serveurs, virtualisation</td><td>AWS EC2, Azure VM, GCP Compute</td><td>Hébergement VMs, migration datacenter</td></tr>
+        <tr><td><strong style="color:var(--neon-2)">PaaS</strong></td><td>Applications, données</td><td>OS, middleware, runtime, infra</td><td>Heroku, Google App Engine, Azure App Service</td><td>Déploiement applis web, API REST</td></tr>
+        <tr><td><strong style="color:var(--neon-2)">SaaS</strong></td><td>Utilisation uniquement</td><td>Tout (infra + appli + données)</td><td>Gmail, Microsoft 365, Salesforce</td><td>Outils bureautiques, CRM, collaboration</td></tr>
+        <tr><td><strong style="color:var(--neon-2)">CaaS</strong></td><td>Conteneurs, code</td><td>Orchestration, infra</td><td>AWS EKS, Google GKE, Azure AKS</td><td>Microservices, DevOps moderne</td></tr>
+      </tbody>
+    </table>
+
+    <div class="quote-block">
+      <strong>Dans mon alternance chez Thales :</strong> j'utilise principalement <strong>IaaS</strong> pour provisionner des environnements cloud, et <strong>CaaS</strong> via Kubernetes pour orchestrer les conteneurs Docker de nos pipelines CI/CD.
+    </div>
+  </section>
+
+  <!-- 3. Fournisseurs -->
+  <section class="card" id="fournisseurs">
+    <div class="section-title"><div class="pulse"></div><h2>3. Les grands fournisseurs Cloud</h2></div>
+    <p>Le marché du cloud public est dominé par trois acteurs principaux, souvent appelés les "hyperscalers". Ils représentent ensemble plus de 65% du marché mondial et investissent des milliards chaque année pour étendre leurs infrastructures.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>Fournisseur</th><th>Part marché</th><th>Points forts</th><th>Services phares</th><th>Présence FR</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>☁️ AWS (Amazon)</strong></td><td class="ok">~31%</td><td>Maturité, catalogue géant, ecosystème riche</td><td>EC2, S3, Lambda, EKS, RDS, CloudFront</td><td class="ok">✔ Paris</td></tr>
+        <tr><td><strong>🔷 Microsoft Azure</strong></td><td class="ok">~25%</td><td>Intégration Microsoft, hybride, Active Directory</td><td>Azure VM, AKS, DevOps, Sentinel, AD B2C</td><td class="ok">✔ Paris</td></tr>
+        <tr><td><strong>🟡 Google Cloud</strong></td><td class="mid">~11%</td><td>IA/ML, Kubernetes natif, Big Data</td><td>GKE, BigQuery, Vertex AI, Cloud Run</td><td class="ok">✔ Paris</td></tr>
+        <tr><td><strong>🇫🇷 OVHcloud</strong></td><td class="bad">~2%</td><td>Souveraineté RGPD, prix compétitifs</td><td>Public Cloud, VPS, Object Storage</td><td class="ok">✔ Roubaix</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🇫🇷 Souveraineté numérique — Enjeu clé chez Thales</h3>
+    <p>Dans le cadre de mon alternance chez Thales, la souveraineté des données est un sujet central. Thales développe des solutions de <strong style="color:#fff;">Cloud de confiance</strong> : S3NS (avec Google Cloud) et T-Systems (avec Microsoft Azure). Ces solutions permettent aux entreprises et administrations françaises d'utiliser des services cloud tout en garantissant que les données restent sous juridiction française, conformément au RGPD et aux exigences de sécurité nationale.</p>
+    <p>Le projet <strong style="color:#fff;">SecNumCloud</strong> de l'ANSSI définit un référentiel de sécurité pour les prestataires de services cloud. Thales y participe activement pour proposer des offres qualifiées aux opérateurs d'importance vitale (OIV).</p>
+  </section>
+
+  <!-- 4. Tendances -->
+  <section class="card" id="tendances">
+    <div class="section-title"><div class="pulse"></div><h2>4. Tendances Cloud 2025</h2></div>
+    <p>Le cloud évolue rapidement. Voici les grandes tendances qui façonnent le secteur en 2025, issues de ma veille continue sur les publications spécialisées.</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="vi">⚡</div><h4>Serverless Computing</h4><p>Exécution de code sans gérer de serveurs. Facturation à la milliseconde. AWS Lambda, Azure Functions, Google Cloud Run. Idéal pour des traitements événementiels et des APIs légères.</p></div>
+      <div class="vcard"><div class="vi">🐳</div><h4>Conteneurs & Kubernetes</h4><p>Docker pour packager les applications, Kubernetes pour les orchestrer. Standard de l'industrie pour les architectures microservices. Utilisé quotidiennement dans mon alternance.</p></div>
+      <div class="vcard"><div class="vi">📝</div><h4>Infrastructure as Code</h4><p>Gestion de l'infrastructure via du code versionné : Terraform, Ansible, Pulumi. Reproductibilité totale des environnements, réduction des erreurs humaines.</p></div>
+      <div class="vcard"><div class="vi">🤖</div><h4>IA & MLOps dans le Cloud</h4><p>Entraînement de modèles IA dans le cloud. SageMaker, Vertex AI, Azure AI. Le MLOps étend les pratiques DevOps aux projets de machine learning.</p></div>
+      <div class="vcard"><div class="vi">🔐</div><h4>Zero Trust Security</h4><p>"Ne jamais faire confiance, toujours vérifier." Chaque accès est authentifié systématiquement, qu'il vienne de l'intérieur ou de l'extérieur du réseau.</p></div>
+      <div class="vcard"><div class="vi">🌿</div><h4>Green Cloud</h4><p>AWS vise 100% énergies renouvelables, Google Cloud déjà carbon-neutral. Le FinOps et la réduction de l'empreinte carbone des datacenters deviennent prioritaires.</p></div>
+      <div class="vcard"><div class="vi">🌐</div><h4>Edge Computing</h4><p>Traitement des données au plus près de la source (IoT, 5G). Réduit la latence et la bande passante. AWS Wavelength, Azure Edge Zones.</p></div>
+      <div class="vcard"><div class="vi">💰</div><h4>FinOps</h4><p>Pratique pour optimiser les coûts cloud. Chaque équipe devient responsable de ses dépenses cloud. Dashboards de coûts, alertes budget, rightsizing.</p></div>
+    </div>
+  </section>
+
+  <!-- 5. DevOps -->
+  <section class="card" id="devops">
+    <div class="section-title"><div class="pulse"></div><h2>5. Cloud & DevOps — Lien avec mon alternance</h2></div>
+    <p>Le DevOps est la pratique qui réunit les équipes de développement (Dev) et d'exploitation (Ops) pour automatiser et accélérer la livraison logicielle. Le Cloud en est le catalyseur naturel : il fournit l'infrastructure élastique et les outils nécessaires aux pipelines CI/CD.</p>
+
+    <h3>🔄 Le cycle DevOps</h3>
+    <div class="schema-flow">
+      <div class="schema-node"><div class="node-icon">📝</div><div class="node-label">Plan</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">💻</div><div class="node-label">Code</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">🏗️</div><div class="node-label">Build</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">🧪</div><div class="node-label">Test</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">📦</div><div class="node-label">Release</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">🚀</div><div class="node-label">Deploy</div></div>
+      <div class="schema-arrow">→</div>
+      <div class="schema-node"><div class="node-icon">📊</div><div class="node-label">Monitor</div></div>
+    </div>
+
+    <h3>🦊 GitLab CI/CD — Mon outil principal chez Thales</h3>
+    <p>GitLab est une plateforme DevOps complète qui intègre le gestionnaire de code source, le CI/CD, le registre de conteneurs et la gestion des tickets. Dans mon alternance, je conçois et maintiens des pipelines <code style="background:#040a16;padding:2px 8px;border-radius:4px;color:var(--neon-2);font-family:'JetBrains Mono',monospace;">.gitlab-ci.yml</code> pour automatiser les déploiements cloud.</p>
+    <p>Chaque push de code déclenche automatiquement le pipeline : build de l'image Docker, exécution des tests, scan de sécurité, puis déploiement sur Kubernetes après validation manuelle.</p>
+
+    <div class="schema-box">
+<pre><code><span style="color:#4ade80"># .gitlab-ci.yml — Pipeline Thales (exemple)</span>
+<span style="color:#60a5fa">stages:</span>
+  - build
+  - test
+  - security
+  - deploy
+
+<span style="color:#60a5fa">variables:</span>
+  IMAGE: registry.gitlab.com/thales/app:$CI_COMMIT_SHA
+
+<span style="color:#f59e0b">build-docker:</span>
+  <span style="color:#60a5fa">stage:</span> build
+  <span style="color:#60a5fa">script:</span>
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
+  <span style="color:#60a5fa">only:</span> [main, develop]
+
+<span style="color:#f59e0b">unit-tests:</span>
+  <span style="color:#60a5fa">stage:</span> test
+  <span style="color:#60a5fa">image:</span> $IMAGE
+  <span style="color:#60a5fa">script:</span>
+    - pytest tests/ --junit-xml=report.xml
+  <span style="color:#60a5fa">artifacts:</span>
+    <span style="color:#60a5fa">reports:</span>
+      <span style="color:#60a5fa">junit:</span> report.xml
+
+<span style="color:#f59e0b">trivy-scan:</span>
+  <span style="color:#60a5fa">stage:</span> security
+  <span style="color:#60a5fa">script:</span>
+    - trivy image --exit-code 1 $IMAGE
+
+<span style="color:#f59e0b">deploy-k8s:</span>
+  <span style="color:#60a5fa">stage:</span> deploy
+  <span style="color:#60a5fa">script:</span>
+    - kubectl apply -f k8s/
+    - kubectl rollout status deployment/app
+  <span style="color:#60a5fa">environment:</span> production
+  <span style="color:#60a5fa">when:</span> manual
+  <span style="color:#60a5fa">only:</span> [main]</code></pre>
+    </div>
+
+    <h3>🐳 Docker — La conteneurisation</h3>
+    <p>Docker permet de packager une application et toutes ses dépendances dans un <strong style="color:#fff;">conteneur</strong> portable et reproductible. Un conteneur fonctionne de manière identique sur n'importe quelle machine, éliminant le problème classique "ça marche sur ma machine".</p>
+    <p>Contrairement aux machines virtuelles, les conteneurs partagent le kernel du système hôte et sont donc beaucoup plus légers (quelques MB vs plusieurs GB). Ils démarrent en quelques secondes.</p>
+
+    <div class="schema-box">
+<pre><code><span style="color:#4ade80"># Dockerfile — Application Node.js</span>
+<span style="color:#60a5fa">FROM</span> node:18-alpine
+
+<span style="color:#60a5fa">WORKDIR</span> /app
+
+<span style="color:#60a5fa">COPY</span> package*.json ./
+<span style="color:#60a5fa">RUN</span> npm ci --only=production
+
+<span style="color:#60a5fa">COPY</span> . .
+
+<span style="color:#60a5fa">EXPOSE</span> 3000
+<span style="color:#60a5fa">CMD</span> ["node", "server.js"]</code></pre>
+    </div>
+
+    <h3>☸️ Kubernetes — L'orchestration de conteneurs</h3>
+    <p>Kubernetes (K8s) automatise le déploiement, la mise à l'échelle et la gestion des applications conteneurisées. Il garantit que le nombre souhaité de réplicas est toujours en cours d'exécution, gère le load balancing, et orchestre les mises à jour sans interruption (rolling updates).</p>
+
+    <div class="schema-box">
+<pre><code><span style="color:#4ade80"># Deployment Kubernetes — 3 réplicas avec health check</span>
+<span style="color:#60a5fa">apiVersion:</span> apps/v1
+<span style="color:#60a5fa">kind:</span> Deployment
+<span style="color:#60a5fa">metadata:</span>
+  name: thales-app
+  namespace: production
+<span style="color:#60a5fa">spec:</span>
+  replicas: 3
+  selector:
+    matchLabels:
+      app: thales-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    spec:
+      containers:
+      - name: app
+        image: registry.gitlab.com/thales/app:v2.1.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests: { memory: "256Mi", cpu: "250m" }
+          limits:   { memory: "512Mi", cpu: "500m" }
+        readinessProbe:
+          httpGet: { path: /health, port: 8080 }
+          initialDelaySeconds: 10
+        livenessProbe:
+          httpGet: { path: /health, port: 8080 }
+          periodSeconds: 30</code></pre>
+    </div>
+  </section>
+
+  <!-- 6. Sécurité -->
+  <section class="card" id="securite">
+    <div class="section-title"><div class="pulse"></div><h2>6. Sécurité dans le Cloud</h2></div>
+    <p>La sécurité est l'un des premiers freins à l'adoption du cloud, notamment dans les entreprises de défense comme Thales. Le modèle de <strong style="color:#fff;">responsabilité partagée</strong> est fondamental pour comprendre qui sécurise quoi.</p>
+
+    <div class="schema-box">
+<pre style="text-align:center;color:#e2e8f0;">
+  RESPONSABILITÉ CLIENT              │  RESPONSABILITÉ FOURNISSEUR
+──────────────────────────────────────────────────────────────────
+  ✅ Données & chiffrement            │  ✅ Datacenter physique
+  ✅ Identités & accès (IAM)          │  ✅ Réseau global
+  ✅ Applications                     │  ✅ Hyperviseur
+  ✅ Configuration OS & réseau (IaaS) │  ✅ Stockage physique
+  ✅ Conformité RGPD                  │  ✅ Serveurs matériels
+</pre>
+    </div>
+
+    <div class="vgrid">
+      <div class="vcard"><div class="vi">🔑</div><h4>IAM — Gestion des identités</h4><p>Contrôler qui peut accéder à quoi, avec le principe du moindre privilège. AWS IAM, Azure Active Directory, Google IAM. MFA obligatoire pour les comptes admin.</p></div>
+      <div class="vcard"><div class="vi">🛡️</div><h4>Zero Trust</h4><p>Aucun utilisateur ou service n'est de confiance par défaut, même en réseau interne. Vérification systématique de chaque requête avec des tokens courts.</p></div>
+      <div class="vcard"><div class="vi">🔒</div><h4>Chiffrement</h4><p>Données chiffrées au repos (AES-256) et en transit (TLS 1.3). Gestion des clés avec AWS KMS, Azure Key Vault, HashiCorp Vault.</p></div>
+      <div class="vcard"><div class="vi">🔍</div><h4>DevSecOps</h4><p>Intégration de la sécurité dans le pipeline CI/CD : scan SAST, DAST, analyse des vulnérabilités des images Docker avec Trivy ou Snyk.</p></div>
+    </div>
+  </section>
+
+  <!-- 7. Outils de veille -->
+  <section class="card" id="outils">
+    <div class="section-title"><div class="pulse"></div><h2>7. Outils et méthode de veille</h2></div>
+    <p>Une veille technologique efficace repose sur une méthode structurée et des outils adaptés. Voici ma démarche personnelle pour rester informé des évolutions du Cloud et du DevOps au quotidien.</p>
+
     <div class="two-col">
       <div>
-        <h3>Sources d'information</h3>
-        <ul>
-          <li>Google Alerts (mots-clés : Cloud, DevOps, Kubernetes)</li>
-          <li>Feedly — agrégateur de flux RSS tech</li>
-          <li>LinkedIn Tech & publications professionnelles</li>
-          <li>Reddit /r/devops, /r/kubernetes</li>
-          <li>YouTube Tech (TechWorld with Nana, Fireship)</li>
-        </ul>
+        <h3>📡 Sources primaires</h3>
+        <div class="source-card"><a href="https://aws.amazon.com/fr/blogs/" target="_blank">📰 AWS Blog officiel</a><p>Annonces produits, études de cas, tutoriels techniques directement par Amazon</p></div>
+        <div class="source-card"><a href="https://azure.microsoft.com/fr-fr/blog/" target="_blank">🔷 Azure Blog</a><p>Nouveautés Azure, intégrations Microsoft 365, annonces certifications</p></div>
+        <div class="source-card"><a href="https://cloud.google.com/blog" target="_blank">🟡 Google Cloud Blog</a><p>IA/ML, Kubernetes, infrastructure, nouvelles régions</p></div>
+        <div class="source-card"><a href="https://kubernetes.io/blog/" target="_blank">🐳 Kubernetes Blog</a><p>Nouvelles versions K8s, breaking changes, bonnes pratiques</p></div>
+        <div class="source-card"><a href="https://about.gitlab.com/blog/" target="_blank">🦊 GitLab Blog</a><p>CI/CD, DevSecOps, nouvelles fonctionnalités GitLab</p></div>
       </div>
       <div>
-        <h3>📚 Documentation officielle</h3>
-        <ul>
-          <li><a href="https://aws.amazon.com/fr/" target="_blank">Amazon Web Services (AWS)</a></li>
-          <li><a href="https://learn.microsoft.com/fr-fr/azure/" target="_blank">Microsoft Azure Learn</a></li>
-          <li><a href="https://cloud.google.com/docs?hl=fr" target="_blank">Google Cloud Docs</a></li>
-          <li><a href="https://kubernetes.io/fr/" target="_blank">Kubernetes.io</a></li>
-          <li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank">Terraform Docs</a></li>
-          <li><a href="https://docs.docker.com/" target="_blank">Docker Docs</a></li>
-        </ul>
+        <h3>🔧 Outils de veille utilisés</h3>
+        <div class="source-card"><a href="https://feedly.com" target="_blank">📖 Feedly</a><p>Agrégateur RSS pour centraliser toutes mes sources tech en un seul endroit</p></div>
+        <div class="source-card"><a href="https://alerts.google.com" target="_blank">🔔 Google Alerts</a><p>Alertes email sur : "Cloud Computing 2025", "Kubernetes", "DevOps Thales"</p></div>
+        <div class="source-card"><a href="https://www.linkedin.com" target="_blank">💼 LinkedIn</a><p>Suivi d'experts : Kelsey Hightower, Liz Rice, Brendan Burns (créateurs K8s)</p></div>
+        <div class="source-card"><a href="https://reddit.com/r/devops" target="_blank">💬 Reddit /r/devops</a><p>Discussions communautaires, retours d'expérience réels du terrain</p></div>
+        <div class="source-card"><a href="https://www.youtube.com/@TechWorldwithNana" target="_blank">▶️ YouTube Tech</a><p>TechWorld with Nana, Fireship, NetworkChuck — tutoriels visuels</p></div>
       </div>
     </div>
   </section>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>🎯 Conclusion</h2>
-    </div>
-    <p>Le Cloud Computing représente aujourd'hui l'avenir des infrastructures informatiques. En tant qu'alternant DevOps chez Thales, je travaille quotidiennement avec ces technologies, ce qui renforce l'intérêt de cette veille. Grâce au suivi régulier des évolutions du secteur, je reste informé des dernières innovations et je peux appliquer les meilleures pratiques dans mes missions.</p>
-    <div style="margin-top:16px;">
-      <a href="projects.html" class="btn">Voir mes projets Cloud</a>
+  <!-- 8. Conclusion -->
+  <section class="card" id="conclusion">
+    <div class="section-title"><div class="pulse"></div><h2>8. Conclusion</h2></div>
+    <p>Le Cloud Computing n'est plus une technologie d'avenir : c'est <strong style="color:#fff;">le socle des infrastructures IT modernes</strong>. En 2025, ne pas maîtriser les concepts cloud, c'est se priver d'une compétence fondamentale pour tout profil IT — qu'il soit administrateur système, développeur, ou DevOps.</p>
+    <p>Cette veille m'a permis de faire le lien entre ma formation BTS SIO et mes missions réelles chez Thales. Les technologies étudiées — Kubernetes, Docker, GitLab CI/CD, Terraform — sont exactement celles que j'utilise au quotidien en entreprise. C'est cette cohérence entre théorie et pratique qui donne du sens à mon alternance.</p>
+    <p>Les prochaines évolutions à surveiller : l'intégration de l'<strong style="color:#fff;">IA générative</strong> dans les outils DevOps (GitLab Duo, GitHub Copilot), la montée en puissance de l'<strong style="color:#fff;">edge computing</strong> avec la 5G, et la généralisation du <strong style="color:#fff;">FinOps</strong> pour optimiser les coûts cloud en entreprise.</p>
+    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="projects.html" class="btn">🚀 Voir mes projets Cloud</a>
+      <a href="experience.html" class="btn btn-outline">💼 Mon alternance Thales</a>
     </div>
   </section>
 

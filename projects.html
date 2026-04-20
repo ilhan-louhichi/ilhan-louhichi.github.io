@@ -4,8 +4,175 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projets — Ilhan Louhichi</title>
-  <meta name="description" content="Projets DevOps et BTS SIO d'Ilhan Louhichi." />
+  <meta name="description" content="Projets DevOps entreprise et BTS SIO d'Ilhan Louhichi." />
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .proj-section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 28px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      border: 1px solid;
+    }
+    .proj-section-header.enterprise {
+      background: linear-gradient(135deg, rgba(26,115,255,0.08), rgba(10,240,255,0.04));
+      border-color: rgba(10,240,255,0.15);
+    }
+    .proj-section-header.school {
+      background: linear-gradient(135deg, rgba(123,79,255,0.08), rgba(26,115,255,0.04));
+      border-color: rgba(123,79,255,0.2);
+    }
+    .proj-section-header .psh-icon { font-size: 2.5rem; }
+    .proj-section-header h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .proj-section-header p { color: var(--muted); font-size: 0.88rem; margin: 0; }
+
+    /* Fake terminal / screenshot */
+    .fake-terminal {
+      background: #0d1117;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin: 16px 0;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .fake-terminal .term-bar {
+      background: #161b22;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .term-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .term-dot.red { background: #ff5f57; }
+    .term-dot.yellow { background: #febc2e; }
+    .term-dot.green { background: #28c840; }
+    .term-title { margin-left: 8px; font-size: 0.78rem; color: #6e7681; font-family: 'JetBrains Mono', monospace; }
+    .fake-terminal pre {
+      padding: 16px 18px;
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: #c9d1d9;
+      overflow-x: auto;
+    }
+
+    /* Fake GitLab pipeline UI */
+    .fake-pipeline {
+      background: #1a1a2e;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin: 16px 0;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .fake-pipeline .pl-topbar {
+      background: #16213e;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.82rem;
+    }
+    .pl-topbar .pl-logo { color: #e24329; font-size: 1.1rem; }
+    .pl-topbar .pl-breadcrumb { color: #8b949e; }
+    .pl-topbar .pl-breadcrumb span { color: #58a6ff; }
+    .fake-pipeline .pl-body { padding: 16px; }
+    .pl-info { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+    .pl-status { background: #238636; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 6px; }
+    .pl-status.running { background: #1f6feb; }
+    .pl-status.failed { background: #da3633; }
+    .pl-commit { color: #8b949e; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    .pl-commit span { color: #58a6ff; }
+    .pl-stages { display: flex; align-items: center; gap: 0; overflow-x: auto; padding-bottom: 4px; }
+    .pl-stage-group { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 110px; }
+    .pl-stage-label { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; }
+    .pl-job {
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      color: #c9d1d9;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .pl-job:hover { border-color: #58a6ff; }
+    .pl-job.success { border-left: 3px solid #238636; }
+    .pl-job.running-job { border-left: 3px solid #1f6feb; }
+    .pl-job.pending { border-left: 3px solid #6e7681; }
+    .pl-job.manual { border-left: 3px solid #d29922; }
+    .pl-connector { width: 30px; height: 2px; background: #30363d; flex-shrink: 0; margin-top: 20px; }
+    .job-icon { font-size: 0.85rem; }
+
+    /* Fake k8s dashboard */
+    .fake-k8s {
+      background: #1a1f2e;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin: 16px 0;
+    }
+    .k8s-topbar { background: #326ce5; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+    .k8s-topbar span { color: #fff; font-weight: 700; font-size: 0.9rem; font-family: 'Syne', sans-serif; }
+    .k8s-body { padding: 16px; }
+    .k8s-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+    .k8s-table th { color: #8b9dc3; padding: 6px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; }
+    .k8s-table td { padding: 8px 10px; color: #c9d1d9; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .k8s-ready { color: #4ade80; }
+    .k8s-age { color: #8b9dc3; }
+
+    /* Fake GLPI screenshot */
+    .fake-glpi {
+      background: #f5f5f5;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      margin: 16px 0;
+    }
+    .glpi-topbar { background: #003d82; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
+    .glpi-topbar span { color: #fff; font-weight: 700; font-size: 0.9rem; }
+    .glpi-body { padding: 16px; background: #fff; }
+    .glpi-breadcrumb { font-size: 0.75rem; color: #666; margin-bottom: 12px; font-family: sans-serif; }
+    .glpi-title { font-size: 1.1rem; font-weight: 700; color: #003d82; margin-bottom: 14px; font-family: sans-serif; }
+    .glpi-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; font-family: sans-serif; }
+    .glpi-table th { background: #003d82; color: #fff; padding: 8px 12px; text-align: left; }
+    .glpi-table td { padding: 8px 12px; border-bottom: 1px solid #eee; color: #333; }
+    .glpi-table tr:nth-child(even) td { background: #f9f9f9; }
+    .glpi-status-open { color: #e65100; font-weight: 600; }
+    .glpi-status-done { color: #2e7d32; font-weight: 600; }
+
+    .project-full {
+      padding: 24px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-full::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon), var(--neon-2));
+    }
+    .project-full.school-proj::before {
+      background: linear-gradient(90deg, var(--neon-3), var(--neon));
+    }
+    .project-full h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 10px; margin-top: 0; }
+    .proj-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  </style>
 </head>
 <body>
 <canvas id="particles-canvas" aria-hidden="true"></canvas>
@@ -23,95 +190,302 @@
     </ul>
   </nav>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>Projets DevOps</h2>
+  <!-- ───── PROJETS ENTREPRISE ───── -->
+  <div class="proj-section-header enterprise">
+    <div class="psh-icon">🏢</div>
+    <div>
+      <h2>Projets Entreprise — Thales</h2>
+      <p>Réalisations techniques dans le cadre de mon alternance DevOps chez Thales (2024–2025)</p>
     </div>
-    <p>Réalisations techniques en matière d'automatisation, CI/CD et infrastructure cloud.</p>
+  </div>
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <div style="margin-bottom:10px;"><span class="tag">DevOps</span></div>
-        <h4>Pipeline CI/CD Microservices</h4>
-        <p style="color:var(--muted);">Mise en place d'un pipeline GitLab CI/CD complet pour déployer une application Docker sur infrastructure cloud, avec gestion des artefacts et rollback automatique.</p>
-        <div class="code-block">
-<pre><code>stages:
-  - build
-  - test
-  - deploy
+  <!-- Projet 1 : Pipeline CI/CD -->
+  <div class="project-full">
+    <div class="proj-meta">
+      <span class="tag">DevOps</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">GitLab CI/CD</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Docker</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Kubernetes</span>
+    </div>
+    <h3>🚀 Pipeline CI/CD Microservices — Déploiement automatisé</h3>
+    <p>Conception et mise en place d'un pipeline GitLab CI/CD complet pour automatiser le build, les tests et le déploiement d'une application microservices sur infrastructure cloud Thales. Le pipeline réduit le temps de mise en production de plusieurs heures à quelques minutes.</p>
 
-deploy:
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Aperçu du pipeline GitLab</h4>
+
+    <!-- Fake GitLab Pipeline -->
+    <div class="fake-pipeline">
+      <div class="pl-topbar">
+        <span class="pl-logo">⬡</span>
+        <span class="pl-breadcrumb">thales / <span>app-microservices</span> / Pipelines / <span>#4721</span></span>
+      </div>
+      <div class="pl-body">
+        <div class="pl-info">
+          <span class="pl-status">✓ passed</span>
+          <span class="pl-commit">commit <span>a3f9c12b</span> · main · 2 minutes ago · Ilhan Louhichi</span>
+        </div>
+        <div class="pl-stages">
+          <div class="pl-stage-group">
+            <div class="pl-stage-label">Build</div>
+            <div class="pl-job success"><span class="job-icon">✓</span> build-docker</div>
+          </div>
+          <div class="pl-connector"></div>
+          <div class="pl-stage-group">
+            <div class="pl-stage-label">Test</div>
+            <div class="pl-job success" style="margin-bottom:4px;"><span class="job-icon">✓</span> unit-tests</div>
+            <div class="pl-job success"><span class="job-icon">✓</span> integration</div>
+          </div>
+          <div class="pl-connector"></div>
+          <div class="pl-stage-group">
+            <div class="pl-stage-label">Security</div>
+            <div class="pl-job success"><span class="job-icon">✓</span> trivy-scan</div>
+          </div>
+          <div class="pl-connector"></div>
+          <div class="pl-stage-group">
+            <div class="pl-stage-label">Staging</div>
+            <div class="pl-job success"><span class="job-icon">✓</span> deploy-staging</div>
+          </div>
+          <div class="pl-connector"></div>
+          <div class="pl-stage-group">
+            <div class="pl-stage-label">Production</div>
+            <div class="pl-job manual"><span class="job-icon">⏸</span> deploy-prod</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Extrait .gitlab-ci.yml</h4>
+    <div class="code-block">
+<pre><code>stages: [build, test, security, deploy-staging, deploy-prod]
+
+build-docker:
+  stage: build
   script:
-    - docker build -t app .
-    - kubectl apply -f k8s/</code></pre>
-        </div>
-        <div class="chips" style="margin-top:10px;">
-          <span class="chip">GitLab CI</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+unit-tests:
+  stage: test
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  script: pytest tests/ -v --cov=app
+  coverage: '/TOTAL.+?(\d+\%)/'
+
+deploy-prod:
+  stage: deploy-prod
+  script:
+    - kubectl set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - kubectl rollout status deployment/app
+  when: manual
+  only: [main]</code></pre>
+    </div>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Résultats obtenus</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:10px;">
+      <div class="stat-card" style="background:rgba(26,115,255,0.06);border:1px solid rgba(26,115,255,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">-85%</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Temps de déploiement</div>
+      </div>
+      <div class="stat-card" style="background:rgba(26,115,255,0.06);border:1px solid rgba(26,115,255,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">100%</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Tests automatisés</div>
+      </div>
+      <div class="stat-card" style="background:rgba(26,115,255,0.06);border:1px solid rgba(26,115,255,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">0</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Interruption de service</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projet 2 : Kubernetes -->
+  <div class="project-full">
+    <div class="proj-meta">
+      <span class="tag">DevOps</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Kubernetes</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">YAML</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Cloud</span>
+    </div>
+    <h3>☸️ Orchestration Kubernetes — Déploiement multi-environnements</h3>
+    <p>Mise en place et gestion d'environnements Kubernetes (staging & production) pour le déploiement d'applications conteneurisées. Implémentation du rolling update, health checks, resource limits et autoscaling horizontal.</p>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Dashboard Kubernetes — État des pods</h4>
+
+    <!-- Fake K8s dashboard -->
+    <div class="fake-k8s">
+      <div class="k8s-topbar">
+        <span>☸ Kubernetes Dashboard — namespace: production</span>
+      </div>
+      <div class="k8s-body">
+        <table class="k8s-table">
+          <thead>
+            <tr><th>NAME</th><th>READY</th><th>STATUS</th><th>RESTARTS</th><th>AGE</th><th>IMAGE</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>thales-app-7d4b9c-xk2p1</td><td class="k8s-ready">1/1</td><td class="k8s-ready">Running</td><td>0</td><td class="k8s-age">2d</td><td>registry/app:a3f9c12b</td></tr>
+            <tr><td>thales-app-7d4b9c-mn8r3</td><td class="k8s-ready">1/1</td><td class="k8s-ready">Running</td><td>0</td><td class="k8s-age">2d</td><td>registry/app:a3f9c12b</td></tr>
+            <tr><td>thales-app-7d4b9c-pl5t7</td><td class="k8s-ready">1/1</td><td class="k8s-ready">Running</td><td>0</td><td class="k8s-age">2d</td><td>registry/app:a3f9c12b</td></tr>
+            <tr><td>redis-cache-6c8b2d-qw9s2</td><td class="k8s-ready">1/1</td><td class="k8s-ready">Running</td><td>0</td><td class="k8s-age">5d</td><td>redis:7-alpine</td></tr>
+            <tr><td>nginx-ingress-ctrl-v7r4k</td><td class="k8s-ready">1/1</td><td class="k8s-ready">Running</td><td>0</td><td class="k8s-age">10d</td><td>nginx/nginx-ingress:3.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Commandes kubectl utilisées</h4>
+    <div class="fake-terminal">
+      <div class="term-bar">
+        <div class="term-dot red"></div>
+        <div class="term-dot yellow"></div>
+        <div class="term-dot green"></div>
+        <span class="term-title">ilhan@thales-devops — bash</span>
+      </div>
+      <pre><code><span style="color:#4ade80">ilhan@devops</span><span style="color:#8b949e">:</span><span style="color:#58a6ff">~/thales-app</span><span style="color:#8b949e">$</span> kubectl get pods -n production
+NAME                          READY   STATUS    RESTARTS   AGE
+thales-app-7d4b9c-xk2p1      1/1     Running   0          2d
+thales-app-7d4b9c-mn8r3      1/1     Running   0          2d
+thales-app-7d4b9c-pl5t7      1/1     Running   0          2d
+
+<span style="color:#4ade80">ilhan@devops</span><span style="color:#8b949e">:</span><span style="color:#58a6ff">~/thales-app</span><span style="color:#8b949e">$</span> kubectl rollout status deployment/thales-app
+Waiting for deployment "thales-app" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "thales-app" rollout to finish: 2 out of 3 new replicas have been updated...
+deployment "thales-app" successfully rolled out
+
+<span style="color:#4ade80">ilhan@devops</span><span style="color:#8b949e">:</span><span style="color:#58a6ff">~/thales-app</span><span style="color:#8b949e">$</span> kubectl top pods -n production
+NAME                          CPU(cores)   MEMORY(bytes)
+thales-app-7d4b9c-xk2p1      45m          128Mi
+thales-app-7d4b9c-mn8r3      38m          121Mi
+thales-app-7d4b9c-pl5t7      52m          134Mi</code></pre>
+    </div>
+
+    <div class="chips" style="margin-top:14px;">
+      <span class="chip">Deployment</span><span class="chip">Service</span><span class="chip">Ingress</span><span class="chip">ConfigMap</span><span class="chip">HPA</span><span class="chip">Rolling Update</span>
+    </div>
+  </div>
+
+  <!-- ───── PROJETS BTS ───── -->
+  <div class="proj-section-header school" style="margin-top:32px;">
+    <div class="psh-icon">🎓</div>
+    <div>
+      <h2>Projets École — BTS SIO SISR</h2>
+      <p>Projets réalisés dans le cadre de la formation BTS Services Informatiques aux Organisations, option SISR</p>
+    </div>
+  </div>
+
+  <!-- Projet BTS 1 : Infrastructure Réseau -->
+  <div class="project-full school-proj">
+    <div class="proj-meta">
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Réseau</span>
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Windows Server</span>
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Active Directory</span>
+    </div>
+    <h3>🌐 Infrastructure Réseau Sécurisée avec Active Directory</h3>
+    <p>Conception et déploiement d'une architecture réseau segmentée pour une PME fictive de 50 utilisateurs. Mise en place d'un domaine Active Directory, segmentation VLAN, serveurs DHCP/DNS et stratégies de sécurité GPO.</p>
+
+    <div class="two-col" style="gap:16px;margin:16px 0;">
+      <div>
+        <h4 style="color:var(--neon-2);font-size:0.88rem;margin:0 0 10px;font-family:'JetBrains Mono',monospace;">// Architecture réseau</h4>
+        <div class="code-block" style="font-size:0.75rem;">
+<pre><code>Réseau : 192.168.0.0/24
+
+VLAN 10 — Administration : 192.168.10.0/24
+  └── Serveur Windows Server 2022 (DC)
+  └── DNS primaire : 192.168.10.1
+  └── DHCP : 192.168.10.1
+
+VLAN 20 — Utilisateurs : 192.168.20.0/24
+  └── Postes clients Windows 10/11
+  └── Plage DHCP : .20.100 - .20.200
+
+VLAN 30 — DMZ : 192.168.30.0/24
+  └── Serveur Web IIS
+  └── Serveur FTP
+
+Routeur inter-VLAN : 192.168.0.1 (Cisco)</code></pre>
         </div>
       </div>
+      <div>
+        <h4 style="color:var(--neon-2);font-size:0.88rem;margin:0 0 10px;font-family:'JetBrains Mono',monospace;">// GPO déployées</h4>
+        <div class="fake-terminal">
+          <div class="term-bar">
+            <div class="term-dot red"></div><div class="term-dot yellow"></div><div class="term-dot green"></div>
+            <span class="term-title">Windows Server — Group Policy Management</span>
+          </div>
+          <pre style="font-size:0.75rem;"><code><span style="color:#58a6ff">Stratégies appliquées :</span>
 
-      <div class="project-card">
-        <div style="margin-bottom:10px;"><span class="tag">DevOps</span></div>
-        <h4>Automatisation Kubernetes</h4>
-        <p style="color:var(--muted);">Déploiement automatisé d'environnements applicatifs via manifests Kubernetes, avec gestion des ressources, scaling et health checks.</p>
-        <div class="code-block">
-<pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ilhan-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: ilhan-app</code></pre>
-        </div>
-        <div class="chips" style="margin-top:10px;">
-          <span class="chip">Kubernetes</span><span class="chip">YAML</span><span class="chip">Cloud</span>
+[✓] Bloquer accès Panneau de contrôle
+[✓] Désactiver USB (postes utilisateurs)
+[✓] Fond d'écran entreprise obligatoire
+[✓] Verrouillage auto 10 min inactivité
+[✓] Complexité mot de passe (12 car.)
+[✓] Historique 24 anciens mots de passe
+[✓] Désactiver Windows Store
+[✓] Rediriger Mes Documents → Serveur</code></pre>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="card">
-    <div class="section-title">
-      <div class="pulse"></div>
-      <h2>Projets BTS SIO</h2>
+    <div class="chips">
+      <span class="chip">Windows Server 2022</span><span class="chip">Active Directory</span><span class="chip">VLAN</span><span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">GPO</span><span class="chip">VirtualBox</span>
     </div>
-    <p>Projets réalisés durant ma formation BTS SIO option SISR.</p>
+  </div>
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <div style="margin-bottom:10px;"><span class="tag" style="background:rgba(26,115,255,0.1);color:#7bb3ff;border-color:rgba(26,115,255,0.2);">Réseau</span></div>
-        <h4>Infrastructure Réseau Sécurisée</h4>
-        <p style="color:var(--muted);">Mise en place d'une architecture réseau segmentée avec VLAN, Active Directory, DNS, DHCP et GPO pour sécuriser les accès utilisateurs.</p>
-        <ul>
-          <li>Configuration VLAN et routage inter-VLAN</li>
-          <li>Création et gestion d'Active Directory</li>
-          <li>Serveur DHCP & DNS</li>
-          <li>Stratégies de sécurité GPO</li>
-        </ul>
-        <div class="chips" style="margin-top:10px;">
-          <span class="chip">Windows Server</span><span class="chip">VLAN</span><span class="chip">Active Directory</span>
-        </div>
+  <!-- Projet BTS 2 : GLPI -->
+  <div class="project-full school-proj">
+    <div class="proj-meta">
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Système</span>
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">GLPI</span>
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Helpdesk</span>
+    </div>
+    <h3>🖥️ Gestion de Parc Informatique avec GLPI</h3>
+    <p>Déploiement et configuration d'une solution ITSM (IT Service Management) GLPI pour la gestion complète du parc informatique d'une entreprise fictive : inventaire matériel, gestion des tickets incidents et suivi des contrats de maintenance.</p>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Interface GLPI — Gestion des tickets</h4>
+
+    <!-- Fake GLPI -->
+    <div class="fake-glpi">
+      <div class="glpi-topbar">
+        <span>🖥 GLPI — Gestion du Parc Informatique v10.0</span>
       </div>
-
-      <div class="project-card">
-        <div style="margin-bottom:10px;"><span class="tag" style="background:rgba(26,115,255,0.1);color:#7bb3ff;border-color:rgba(26,115,255,0.2);">Système</span></div>
-        <h4>Gestion de Parc avec GLPI</h4>
-        <p style="color:var(--muted);">Déploiement d'une solution GLPI pour la gestion du parc informatique, le suivi des tickets incidents et les ressources partagées.</p>
-        <ul>
-          <li>Installation et configuration de GLPI</li>
-          <li>Gestion des tickets utilisateurs</li>
-          <li>Inventaire matériel automatisé</li>
-          <li>Droits NTFS & GPO</li>
-        </ul>
-        <div class="chips" style="margin-top:10px;">
-          <span class="chip">GLPI</span><span class="chip">Windows Server</span><span class="chip">NTFS</span>
-        </div>
+      <div class="glpi-body">
+        <div class="glpi-breadcrumb">Accueil > Assistance > Tickets</div>
+        <div class="glpi-title">📋 Liste des tickets — 12 tickets ouverts</div>
+        <table class="glpi-table">
+          <thead>
+            <tr><th>ID</th><th>Titre</th><th>Demandeur</th><th>Statut</th><th>Priorité</th><th>Date</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>#1042</td><td>PC ne démarre plus — Bureau 201</td><td>M. Martin</td><td class="glpi-status-open">Nouveau</td><td style="color:#c62828;">Haute</td><td>19/04/2025</td></tr>
+            <tr><td>#1041</td><td>Impossible accéder au réseau partagé</td><td>Mme Dupont</td><td class="glpi-status-open">En cours</td><td style="color:#e65100;">Moyenne</td><td>18/04/2025</td></tr>
+            <tr><td>#1040</td><td>Installation logiciel comptabilité</td><td>M. Bernard</td><td class="glpi-status-done">Résolu</td><td style="color:#2e7d32;">Basse</td><td>17/04/2025</td></tr>
+            <tr><td>#1039</td><td>Imprimante hors service — Salle A</td><td>Mme Petit</td><td class="glpi-status-done">Fermé</td><td style="color:#e65100;">Moyenne</td><td>16/04/2025</td></tr>
+            <tr><td>#1038</td><td>Réinitialisation mot de passe AD</td><td>M. Leroy</td><td class="glpi-status-done">Résolu</td><td style="color:#2e7d32;">Basse</td><td>15/04/2025</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </section>
+
+    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Inventaire matériel géré</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0;">
+      <div style="background:rgba(123,79,255,0.06);border:1px solid rgba(123,79,255,0.15);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:#a78bfa;font-family:'Syne',sans-serif;">47</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Postes informatiques</div>
+      </div>
+      <div style="background:rgba(123,79,255,0.06);border:1px solid rgba(123,79,255,0.15);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:#a78bfa;font-family:'Syne',sans-serif;">8</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Imprimantes réseau</div>
+      </div>
+      <div style="background:rgba(123,79,255,0.06);border:1px solid rgba(123,79,255,0.15);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:#a78bfa;font-family:'Syne',sans-serif;">3</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Serveurs</div>
+      </div>
+      <div style="background:rgba(123,79,255,0.06);border:1px solid rgba(123,79,255,0.15);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:1.6rem;font-weight:800;color:#a78bfa;font-family:'Syne',sans-serif;">98%</div>
+        <div style="font-size:0.75rem;color:var(--muted);">Tickets résolus &lt;48h</div>
+      </div>
+    </div>
+
+    <div class="chips" style="margin-top:14px;">
+      <span class="chip">GLPI 10</span><span class="chip">Windows Server</span><span class="chip">NTFS</span><span class="chip">VirtualBox</span><span class="chip">FusionInventory</span>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div>© 2025 Ilhan Louhichi — Alternant DevOps chez Thales</div>
