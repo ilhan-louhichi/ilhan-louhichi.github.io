@@ -3,121 +3,120 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ilhan Louhichi — Portfolio</title>
+  <title>Projets — Ilhan Louhichi</title>
+  <meta name="description" content="Projets DevOps et BTS SIO d'Ilhan Louhichi." />
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <canvas id="particles-canvas" aria-hidden="true"></canvas>
 <div class="container">
 
-<nav class="nav">
-  <a class="logo" href="index.html">Ilhan Louhichi</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="about.html">À propos</a></li>
-    <li><a href="experience.html">Expériences</a></li>
-    <li><a href="projects.html">Projets</a></li>
-    <li><a href="veille.html">Veille</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+  <nav class="nav">
+    <a class="logo" href="index.html">Ilhan Louhichi</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="experience.html">Expériences</a></li>
+      <li><a href="projects.html">Projets</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<section class="card">
-  <div class="section-title">
-    <div class="pulse"></div>
-    <h2>Mes Projets BTS SIO & DevOps</h2>
-  </div>
-
-  <p>
-    Découvrez une sélection de projets réalisés durant ma formation BTS SIO option SLAM,
-    ainsi que mes réalisations techniques en DevOps.
-  </p>
-
-  <div class="projects-grid" style="margin-top:12px">
-
-    <!-- PROJET BTS 1 -->
-    <div class="project-card">
-      <h4>Infrastructure Réseau Sécurisée</h4>
-      <p style="color:var(--muted)">
-        Mise en place d'une architecture réseau segmentée avec VLAN, Active Directory,
-        DNS, DHCP et GPO afin de sécuriser les accès utilisateurs.
-      </p>
-
-      <ul>
-        <li>Configuration VLAN</li>
-        <li>Création Active Directory</li>
-        <li>Serveur DHCP / DNS</li>
-        <li>Stratégies de sécurité GPO</li>
-      </ul>
-
-      <p><strong>Technologies :</strong> Windows Server, VLAN, AD, DHCP, DNS</p>
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>Projets DevOps</h2>
     </div>
+    <p>Réalisations techniques en matière d'automatisation, CI/CD et infrastructure cloud.</p>
 
-    <!-- PROJET BTS 2 -->
-    <div class="project-card">
-      <h4>Gestion de Parc Informatique avec GLPI</h4>
-      <p style="color:var(--muted)">
-        Déploiement d'une solution GLPI pour la gestion du parc informatique,
-        le suivi des tickets incidents et les ressources partagées.
-      </p>
-
-      <ul>
-        <li>Installation GLPI</li>
-        <li>Gestion tickets utilisateurs</li>
-        <li>Inventaire matériel</li>
-        <li>Droits NTFS & GPO</li>
-      </ul>
-
-      <p><strong>Technologies :</strong> GLPI, Windows Server, NTFS, VirtualBox</p>
-    </div>
-
-    <!-- PROJET DEVOPS -->
-    <div class="project-card">
-      <h4>Déploiement CI/CD Microservices</h4>
-      <p style="color:var(--muted)">
-        Mise en place d’un pipeline GitLab CI/CD pour déployer une application Docker
-        sur infrastructure cloud.
-      </p>
-
-<div class="code-block">
+    <div class="projects-grid">
+      <div class="project-card">
+        <div style="margin-bottom:10px;"><span class="tag">DevOps</span></div>
+        <h4>Pipeline CI/CD Microservices</h4>
+        <p style="color:var(--muted);">Mise en place d'un pipeline GitLab CI/CD complet pour déployer une application Docker sur infrastructure cloud, avec gestion des artefacts et rollback automatique.</p>
+        <div class="code-block">
 <pre><code>stages:
   - build
   - test
   - deploy
-</code></pre>
-</div>
 
-      <p><strong>Technologies :</strong> GitLab CI, Docker, Kubernetes</p>
-    </div>
+deploy:
+  script:
+    - docker build -t app .
+    - kubectl apply -f k8s/</code></pre>
+        </div>
+        <div class="chips" style="margin-top:10px;">
+          <span class="chip">GitLab CI</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+        </div>
+      </div>
 
-    <!-- PROJET DEVOPS 2 -->
-    <div class="project-card">
-      <h4>Automatisation Kubernetes</h4>
-      <p style="color:var(--muted)">
-        Déploiement automatisé d’environnements via manifests Kubernetes.
-      </p>
-
-<div class="code-block">
+      <div class="project-card">
+        <div style="margin-bottom:10px;"><span class="tag">DevOps</span></div>
+        <h4>Automatisation Kubernetes</h4>
+        <p style="color:var(--muted);">Déploiement automatisé d'environnements applicatifs via manifests Kubernetes, avec gestion des ressources, scaling et health checks.</p>
+        <div class="code-block">
 <pre><code>apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ilhan-app
-</code></pre>
-</div>
-
-      <p><strong>Technologies :</strong> Kubernetes, YAML</p>
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ilhan-app</code></pre>
+        </div>
+        <div class="chips" style="margin-top:10px;">
+          <span class="chip">Kubernetes</span><span class="chip">YAML</span><span class="chip">Cloud</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>Projets BTS SIO</h2>
+    </div>
+    <p>Projets réalisés durant ma formation BTS SIO option SISR.</p>
 
-<footer class="site-footer">
-  <div>© 2025 Ilhan Louhichi — Alternant DevOps chez Thales</div>
-  <div>
-    <a href="LOUHICHI_ILHAN_CV.pdf" target="_blank">Télécharger le CV (PDF)</a>
-  </div>
-</footer>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div style="margin-bottom:10px;"><span class="tag" style="background:rgba(26,115,255,0.1);color:#7bb3ff;border-color:rgba(26,115,255,0.2);">Réseau</span></div>
+        <h4>Infrastructure Réseau Sécurisée</h4>
+        <p style="color:var(--muted);">Mise en place d'une architecture réseau segmentée avec VLAN, Active Directory, DNS, DHCP et GPO pour sécuriser les accès utilisateurs.</p>
+        <ul>
+          <li>Configuration VLAN et routage inter-VLAN</li>
+          <li>Création et gestion d'Active Directory</li>
+          <li>Serveur DHCP & DNS</li>
+          <li>Stratégies de sécurité GPO</li>
+        </ul>
+        <div class="chips" style="margin-top:10px;">
+          <span class="chip">Windows Server</span><span class="chip">VLAN</span><span class="chip">Active Directory</span>
+        </div>
+      </div>
 
+      <div class="project-card">
+        <div style="margin-bottom:10px;"><span class="tag" style="background:rgba(26,115,255,0.1);color:#7bb3ff;border-color:rgba(26,115,255,0.2);">Système</span></div>
+        <h4>Gestion de Parc avec GLPI</h4>
+        <p style="color:var(--muted);">Déploiement d'une solution GLPI pour la gestion du parc informatique, le suivi des tickets incidents et les ressources partagées.</p>
+        <ul>
+          <li>Installation et configuration de GLPI</li>
+          <li>Gestion des tickets utilisateurs</li>
+          <li>Inventaire matériel automatisé</li>
+          <li>Droits NTFS & GPO</li>
+        </ul>
+        <div class="chips" style="margin-top:10px;">
+          <span class="chip">GLPI</span><span class="chip">Windows Server</span><span class="chip">NTFS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div>© 2025 Ilhan Louhichi — Alternant DevOps chez Thales</div>
+    <div><a href="files/LOUHICHI_ILHAN_CV.pdf" target="_blank">📄 Télécharger le CV</a></div>
+  </footer>
 </div>
 <script src="js/particles.js"></script>
 </body>

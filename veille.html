@@ -1,129 +1,156 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Veille Technologique - Cloud Computing</title>
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Veille Technologique — Ilhan Louhichi</title>
+  <meta name="description" content="Veille technologique sur le Cloud Computing — Ilhan Louhichi, BTS SIO." />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
 <div class="container">
 
-<nav class="nav">
-<a class="logo" href="index.html">Ilhan Louhichi</a>
+  <nav class="nav">
+    <a class="logo" href="index.html">Ilhan Louhichi</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="experience.html">Expériences</a></li>
+      <li><a href="projects.html">Projets</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<ul class="nav-links">
-<li><a href="index.html">Accueil</a></li>
-<li><a href="about.html">À propos</a></li>
-<li><a href="experience.html">Expériences</a></li>
-<li><a href="projects.html">Projets</a></li>
-<li><a href="veille.html">Veille</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>Veille Technologique — Cloud Computing</h2>
+    </div>
+    <p>Dans le cadre de ma formation BTS SIO et de mon alternance chez Thales, j'ai choisi de réaliser une veille technologique sur le <strong style="color:#fff;">Cloud Computing</strong>. Cette technologie est aujourd'hui incontournable dans les entreprises modernes, permettant d'héberger des services, stocker des données, sécuriser les infrastructures et automatiser les déploiements.</p>
+  </section>
 
-<section class="card">
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>📌 Qu'est-ce que le Cloud Computing ?</h2>
+    </div>
+    <p>Le Cloud Computing consiste à utiliser des serveurs distants accessibles via Internet afin de fournir des ressources informatiques à la demande. Il se décline en plusieurs modèles :</p>
 
-<div class="section-title">
-<h2>Veille Technologique : Le Cloud Computing</h2>
+    <div class="veille-grid">
+      <div class="veille-card">
+        <div class="vc-icon">🖥️</div>
+        <h4>IaaS</h4>
+        <p>Infrastructure as a Service — serveurs virtuels, stockage, réseau à la demande.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">⚙️</div>
+        <h4>PaaS</h4>
+        <p>Platform as a Service — environnements de développement et déploiement managés.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">☁️</div>
+        <h4>SaaS</h4>
+        <p>Software as a Service — applications accessibles directement via le navigateur.</p>
+      </div>
+    </div>
+
+    <h3>Principaux fournisseurs</h3>
+    <div class="chips">
+      <span class="chip">AWS</span>
+      <span class="chip">Microsoft Azure</span>
+      <span class="chip">Google Cloud Platform</span>
+      <span class="chip">OVHcloud</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>🚀 Tendances Cloud 2025</h2>
+    </div>
+
+    <div class="veille-grid">
+      <div class="veille-card">
+        <div class="vc-icon">🔀</div>
+        <h4>Multi-Cloud</h4>
+        <p>Utilisation simultanée de plusieurs fournisseurs cloud pour éviter les dépendances et optimiser les coûts.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">⚡</div>
+        <h4>Serverless</h4>
+        <p>Exécution de code sans gérer les serveurs — AWS Lambda, Azure Functions, Google Cloud Run.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">🐳</div>
+        <h4>Kubernetes</h4>
+        <p>Orchestration de conteneurs Docker pour des déploiements scalables et résilients.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">📝</div>
+        <h4>Infrastructure as Code</h4>
+        <p>Gestion de l'infrastructure via du code — Terraform, Ansible, Pulumi.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">🔐</div>
+        <h4>Cloud Sécurisé</h4>
+        <p>Zero Trust, IAM, chiffrement bout en bout — la sécurité native au cloud.</p>
+      </div>
+      <div class="veille-card">
+        <div class="vc-icon">🤖</div>
+        <h4>IA dans le Cloud</h4>
+        <p>Services IA hébergés — SageMaker, Azure AI, Vertex AI pour le machine learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>🛠 Outils de veille utilisés</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Sources d'information</h3>
+        <ul>
+          <li>Google Alerts (mots-clés : Cloud, DevOps, Kubernetes)</li>
+          <li>Feedly — agrégateur de flux RSS tech</li>
+          <li>LinkedIn Tech & publications professionnelles</li>
+          <li>Reddit /r/devops, /r/kubernetes</li>
+          <li>YouTube Tech (TechWorld with Nana, Fireship)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>📚 Documentation officielle</h3>
+        <ul>
+          <li><a href="https://aws.amazon.com/fr/" target="_blank">Amazon Web Services (AWS)</a></li>
+          <li><a href="https://learn.microsoft.com/fr-fr/azure/" target="_blank">Microsoft Azure Learn</a></li>
+          <li><a href="https://cloud.google.com/docs?hl=fr" target="_blank">Google Cloud Docs</a></li>
+          <li><a href="https://kubernetes.io/fr/" target="_blank">Kubernetes.io</a></li>
+          <li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank">Terraform Docs</a></li>
+          <li><a href="https://docs.docker.com/" target="_blank">Docker Docs</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-title">
+      <div class="pulse"></div>
+      <h2>🎯 Conclusion</h2>
+    </div>
+    <p>Le Cloud Computing représente aujourd'hui l'avenir des infrastructures informatiques. En tant qu'alternant DevOps chez Thales, je travaille quotidiennement avec ces technologies, ce qui renforce l'intérêt de cette veille. Grâce au suivi régulier des évolutions du secteur, je reste informé des dernières innovations et je peux appliquer les meilleures pratiques dans mes missions.</p>
+    <div style="margin-top:16px;">
+      <a href="projects.html" class="btn">Voir mes projets Cloud</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div>© 2025 Ilhan Louhichi — Alternant DevOps chez Thales</div>
+    <div><a href="files/LOUHICHI_ILHAN_CV.pdf" target="_blank">📄 Télécharger le CV</a></div>
+  </footer>
 </div>
-
-<p>
-Dans le cadre de ma formation BTS SIO ainsi que de mon alternance chez Thales,
-j’ai choisi de réaliser une veille technologique sur le <strong>Cloud Computing</strong>.
-Cette technologie est aujourd’hui incontournable dans les entreprises modernes,
-car elle permet d’héberger des services, stocker des données, sécuriser les infrastructures
-et automatiser les déploiements.
-</p>
-
-<h3>📌 Qu'est-ce que le Cloud Computing ?</h3>
-
-<p>
-Le Cloud Computing consiste à utiliser des serveurs distants accessibles via Internet
-afin de fournir des ressources informatiques à la demande :
-</p>
-
-<ul>
-<li>Serveurs virtuels</li>
-<li>Stockage de données</li>
-<li>Base de données</li>
-<li>Applications web</li>
-<li>Sécurité réseau</li>
-<li>Outils DevOps</li>
-</ul>
-
-<p>
-Les principaux fournisseurs Cloud sont :
-<strong>AWS</strong>, <strong>Microsoft Azure</strong> et <strong>Google Cloud Platform</strong>.
-</p>
-
-<h3>📈 Pourquoi ce sujet ?</h3>
-
-<p>
-Le Cloud est directement lié aux métiers de :
-</p>
-
-<ul>
-<li>Administrateur systèmes et réseaux</li>
-<li>Ingénieur DevOps</li>
-<li>Cybersécurité</li>
-<li>Développeur Full Stack</li>
-<li>Architecte Infrastructure</li>
-</ul>
-
-<p>
-Étant actuellement en alternance dans le domaine DevOps,
-cette veille me permet de suivre les évolutions utilisées en entreprise.
-</p>
-
-<h3>🚀 Tendances Cloud en 2025</h3>
-
-<ul>
-<li><strong>Multi-Cloud :</strong> utilisation de plusieurs fournisseurs cloud</li>
-<li><strong>Serverless :</strong> exécution de code sans gérer les serveurs</li>
-<li><strong>Kubernetes :</strong> orchestration de conteneurs</li>
-<li><strong>Infrastructure as Code :</strong> Terraform / Ansible</li>
-<li><strong>Cloud sécurisé :</strong> Zero Trust & IAM</li>
-<li><strong>IA dans le Cloud :</strong> services IA hébergés</li>
-</ul>
-
-<h3>🛠 Outils de veille utilisés</h3>
-
-<ul>
-<li>Google Alerts</li>
-<li>Feedly</li>
-<li>LinkedIn Tech</li>
-<li>Reddit /r/devops</li>
-<li>Documentation officielles AWS / Azure / Google</li>
-<li>YouTube Tech (Docker, Kubernetes, Cloud)</li>
-</ul>
-
-<h3>📚 Documentation Officielle</h3>
-
-<ul>
-<li><a href="https://aws.amazon.com/fr/" target="_blank">Amazon Web Services (AWS)</a></li>
-<li><a href="https://learn.microsoft.com/fr-fr/azure/" target="_blank">Microsoft Azure Learn</a></li>
-<li><a href="https://cloud.google.com/docs?hl=fr" target="_blank">Google Cloud Documentation</a></li>
-<li><a href="https://kubernetes.io/fr/" target="_blank">Documentation Kubernetes</a></li>
-<li><a href="https://developer.hashicorp.com/terraform/docs" target="_blank">Documentation Terraform</a></li>
-<li><a href="https://docs.docker.com/" target="_blank">Documentation Docker</a></li>
-</ul>
-
-<h3>🎯 Conclusion</h3>
-
-<p>
-Le Cloud Computing représente aujourd’hui l’avenir des infrastructures informatiques.
-Grâce à cette veille technologique, je développe mes compétences sur les outils modernes
-utilisés dans les entreprises et je reste informé des dernières innovations.
-</p>
-
-</section>
-
-<footer class="site-footer">
-<div>© 2025 Ilhan Louhichi</div>
-</footer>
-
-</div>
+<script src="js/particles.js"></script>
 </body>
 </html>
