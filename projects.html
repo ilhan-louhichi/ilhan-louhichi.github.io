@@ -8,13 +8,8 @@
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .proj-section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 28px;
-      border-radius: 14px;
-      margin-bottom: 24px;
-      border: 1px solid;
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 28px; border-radius: 14px; margin-bottom: 24px; border: 1px solid;
     }
     .proj-section-header.enterprise {
       background: linear-gradient(135deg, rgba(26,115,255,0.08), rgba(10,240,255,0.04));
@@ -28,96 +23,60 @@
     .proj-section-header h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
     .proj-section-header p { color: var(--muted); font-size: 0.88rem; margin: 0; }
 
-    .fake-terminal {
-      background: #0d1117;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      margin: 16px 0;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    .term-view {
+      background: #0d1117; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08); overflow: hidden;
+      margin: 16px 0; box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     }
-    .fake-terminal .term-bar {
-      background: #161b22;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    .term-view .term-bar {
+      background: #161b22; padding: 8px 14px; display: flex;
+      align-items: center; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .term-dot { width: 12px; height: 12px; border-radius: 50%; }
     .term-dot.red { background: #ff5f57; }
     .term-dot.yellow { background: #febc2e; }
     .term-dot.green { background: #28c840; }
     .term-title { margin-left: 8px; font-size: 0.78rem; color: #6e7681; font-family: 'JetBrains Mono', monospace; }
-    .fake-terminal pre {
-      padding: 16px 18px;
-      margin: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: #c9d1d9;
-      overflow-x: auto;
+    .term-view pre {
+      padding: 16px 18px; margin: 0;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+      line-height: 1.7; color: #c9d1d9; overflow-x: auto;
     }
-
-    .fake-pipeline {
-      background: #1a1a2e;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      margin: 16px 0;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    .pipeline-view {
+      background: #1a1a2e; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08); overflow: hidden;
+      margin: 16px 0; box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
-    .fake-pipeline .pl-topbar {
-      background: #16213e;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      font-size: 0.82rem;
+    .pipeline-view .pl-topbar {
+      background: #16213e; padding: 10px 16px; display: flex;
+      align-items: center; gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.82rem;
     }
     .pl-topbar .pl-logo { color: #e24329; font-size: 1.1rem; }
     .pl-topbar .pl-breadcrumb { color: #8b949e; }
     .pl-topbar .pl-breadcrumb span { color: #58a6ff; }
-    .fake-pipeline .pl-body { padding: 16px; }
+    .pipeline-view .pl-body { padding: 16px; }
     .pl-info { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
     .pl-status { background: #238636; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; display: flex; align-items: center; gap: 6px; }
-    .pl-status.running { background: #1f6feb; }
-    .pl-status.failed { background: #da3633; }
     .pl-commit { color: #8b949e; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
     .pl-commit span { color: #58a6ff; }
     .pl-stages { display: flex; align-items: center; gap: 0; overflow-x: auto; padding-bottom: 4px; }
     .pl-stage-group { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 110px; }
     .pl-stage-label { font-size: 0.7rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; }
     .pl-job {
-      background: #21262d;
-      border: 1px solid #30363d;
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-size: 0.78rem;
-      color: #c9d1d9;
-      font-family: 'JetBrains Mono', monospace;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: border-color .2s;
-      width: 100%;
+      background: #21262d; border: 1px solid #30363d; border-radius: 6px;
+      padding: 8px 14px; font-size: 0.78rem; color: #c9d1d9;
+      font-family: 'JetBrains Mono', monospace; display: flex;
+      align-items: center; gap: 8px; cursor: pointer; transition: border-color .2s; width: 100%;
     }
     .pl-job:hover { border-color: #58a6ff; }
     .pl-job.success { border-left: 3px solid #238636; }
-    .pl-job.running-job { border-left: 3px solid #1f6feb; }
-    .pl-job.pending { border-left: 3px solid #6e7681; }
     .pl-job.manual { border-left: 3px solid #d29922; }
     .pl-connector { width: 30px; height: 2px; background: #30363d; flex-shrink: 0; margin-top: 20px; }
     .job-icon { font-size: 0.85rem; }
-
-    .fake-k8s {
-      background: #1a1f2e;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      margin: 16px 0;
+    .k8s-view {
+      background: #1a1f2e; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08); overflow: hidden; margin: 16px 0;
     }
     .k8s-topbar { background: #326ce5; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
     .k8s-topbar span { color: #fff; font-weight: 700; font-size: 0.9rem; font-family: 'Syne', sans-serif; }
@@ -127,14 +86,7 @@
     .k8s-table td { padding: 8px 10px; color: #c9d1d9; border-bottom: 1px solid rgba(255,255,255,0.03); }
     .k8s-ready { color: #4ade80; }
     .k8s-age { color: #8b9dc3; }
-
-    .fake-glpi {
-      background: #f5f5f5;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      overflow: hidden;
-      margin: 16px 0;
-    }
+    .glpi-view { background: #f5f5f5; border-radius: 12px; border: 1px solid #ddd; overflow: hidden; margin: 16px 0; }
     .glpi-topbar { background: #003d82; padding: 10px 16px; display: flex; align-items: center; gap: 10px; }
     .glpi-topbar span { color: #fff; font-weight: 700; font-size: 0.9rem; }
     .glpi-body { padding: 16px; background: #fff; }
@@ -146,177 +98,72 @@
     .glpi-table tr:nth-child(even) td { background: #f9f9f9; }
     .glpi-status-open { color: #e65100; font-weight: 600; }
     .glpi-status-done { color: #2e7d32; font-weight: 600; }
-
     .project-full {
-      padding: 24px;
-      border-radius: 14px;
+      padding: 24px; border-radius: 14px;
       background: linear-gradient(145deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
+      border: 1px solid var(--border); margin-bottom: 20px;
+      position: relative; overflow: hidden;
     }
     .project-full::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--neon), var(--neon-2));
     }
-    .project-full.school-proj::before {
-      background: linear-gradient(90deg, var(--neon-3), var(--neon));
-    }
+    .project-full.school-proj::before { background: linear-gradient(90deg, var(--neon-3), var(--neon)); }
     .project-full h3 { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 10px; margin-top: 0; }
     .proj-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-
-    /* ─── NOUVEAUX STYLES : Screenshot réel ─── */
+    .doc-bloc {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid var(--neon-2, #0af0ff); border-radius: 10px; padding: 16px 18px; margin: 14px 0;
+    }
+    .doc-bloc h5 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--neon-2, #0af0ff); margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .doc-bloc p { font-size: 0.85rem; color: var(--muted, #8b949e); margin: 0 0 8px; line-height: 1.6; }
+    .doc-bloc p:last-child { margin: 0; }
+    .doc-bloc ul { margin: 6px 0 0 16px; padding: 0; }
+    .doc-bloc ul li { font-size: 0.83rem; color: var(--muted, #8b949e); margin-bottom: 4px; line-height: 1.5; }
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; margin: 14px 0; }
+    .doc-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; }
+    .doc-card h6 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--neon-2, #0af0ff); margin: 0 0 8px; text-transform: uppercase; }
+    .doc-card p { font-size: 0.81rem; color: var(--muted, #8b949e); margin: 0; line-height: 1.5; }
     .real-screenshot-wrapper {
-      margin: 16px 0;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-      position: relative;
-      cursor: pointer;
+      margin: 16px 0; border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      position: relative; cursor: pointer;
     }
-    .real-screenshot-wrapper img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-    .real-screenshot-wrapper:hover img {
-      transform: scale(1.01);
-    }
+    .real-screenshot-wrapper img { width: 100%; display: block; border-radius: 12px; transition: transform 0.3s ease; }
+    .real-screenshot-wrapper:hover img { transform: scale(1.01); }
     .screenshot-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
+      position: absolute; bottom: 0; left: 0; right: 0;
       background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-      padding: 14px 16px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 14px 16px 12px; display: flex; align-items: center; justify-content: space-between;
     }
-    .screenshot-overlay span {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.8);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .screenshot-overlay .badge-real {
-      background: rgba(35, 134, 54, 0.85);
-      color: #fff;
-      font-size: 0.7rem;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    /* Lightbox */
-    .lightbox-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
-    .lightbox-backdrop.open {
-      display: flex;
-    }
-    .lightbox-backdrop img {
-      max-width: 92vw;
-      max-height: 90vh;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px; right: 24px;
-      color: #fff;
-      font-size: 1.8rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      line-height: 1;
-    }
-
-    /* ─── NOUVEAUX STYLES : Boutons PPTX ─── */
-    .pptx-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 18px 0 10px;
-    }
-    .pptx-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-      cursor: pointer;
-      border: none;
-    }
-    .pptx-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    }
-    .pptx-btn.download {
-      background: rgba(26,115,255,0.12);
-      border: 1px solid rgba(26,115,255,0.3);
-      color: #58a6ff;
-    }
-    .pptx-btn.download:hover {
-      background: rgba(26,115,255,0.22);
-    }
+    .screenshot-overlay span { font-size: 0.78rem; color: rgba(255,255,255,0.8); font-family: 'JetBrains Mono', monospace; }
+    .screenshot-overlay .badge-real { background: rgba(35,134,54,0.85); color: #fff; font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+    .lightbox-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; cursor: zoom-out; }
+    .lightbox-backdrop.open { display: flex; }
+    .lightbox-backdrop img { max-width: 92vw; max-height: 90vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 1.8rem; cursor: pointer; background: none; border: none; line-height: 1; }
+    .pptx-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 10px; }
+    .pptx-btn { display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 10px; text-decoration: none; font-size: 0.84rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; cursor: pointer; }
+    .pptx-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .pptx-btn.download { background: rgba(26,115,255,0.12); border: 1px solid rgba(26,115,255,0.3); color: #58a6ff; }
+    .pptx-btn.download:hover { background: rgba(26,115,255,0.22); }
     .pptx-icon { font-size: 1.1rem; }
-    .pptx-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
+    .pptx-info { display: flex; flex-direction: column; gap: 1px; }
     .pptx-info .pptx-label { font-size: 0.84rem; font-weight: 600; }
     .pptx-info .pptx-sub { font-size: 0.7rem; opacity: 0.65; font-weight: 400; }
-    .pptx-group {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin: 16px 0;
-    }
-    .pptx-group-title {
-      font-size: 0.78rem;
-      color: var(--muted, #8b949e);
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .pptx-group-title::before {
-      content: '//';
-      color: var(--neon-2, #0af0ff);
-    }
+    .pptx-group { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 16px; margin: 16px 0; }
+    .pptx-group-title { font-size: 0.78rem; color: var(--muted, #8b949e); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .pptx-group-title::before { content: '//'; color: var(--neon-2, #0af0ff); }
+    .section-label { color: var(--neon-2, #0af0ff); font-size: 0.88rem; margin: 20px 0 8px; font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
 <body>
 <canvas id="particles-canvas" aria-hidden="true"></canvas>
-
-<!-- Lightbox global -->
 <div class="lightbox-backdrop" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightbox-img" src="" alt="Capture agrandie" onclick="event.stopPropagation()">
 </div>
-
 <div class="container">
-
   <nav class="nav">
     <a class="logo" href="index.html">Ilhan Louhichi</a>
     <ul class="nav-links">
@@ -328,8 +175,6 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-
-  <!-- ───── PROJETS ENTREPRISE ───── -->
   <div class="proj-section-header enterprise">
     <div class="psh-icon">🏢</div>
     <div>
@@ -338,20 +183,38 @@
     </div>
   </div>
 
-  <!-- Projet 1 : Pipeline CI/CD -->
   <div class="project-full">
     <div class="proj-meta">
       <span class="tag">DevOps</span>
       <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">GitLab CI/CD</span>
       <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Docker</span>
       <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Kubernetes</span>
+      <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Snyk</span>
     </div>
     <h3>🚀 Pipeline CI/CD Microservices — Déploiement automatisé</h3>
-    <p>Conception et mise en place d'un pipeline GitLab CI/CD complet pour automatiser le build, les tests et le déploiement d'une application microservices sur infrastructure cloud Thales. Le pipeline réduit le temps de mise en production de plusieurs heures à quelques minutes.</p>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Aperçu du pipeline GitLab</h4>
+    <div class="doc-bloc">
+      <h5>📋 Contexte & Problématique</h5>
+      <p>Au sein de l'équipe DevOps de Thales, les déploiements d'applications microservices étaient réalisés manuellement, engendrant des erreurs humaines fréquentes et des délais importants (plusieurs heures par livraison). J'ai été chargé de concevoir et d'implémenter une chaîne CI/CD complète pour automatiser l'intégralité du processus.</p>
+    </div>
 
-    <div class="fake-pipeline">
+    <div class="doc-grid">
+      <div class="doc-card">
+        <h6>🎯 Objectifs</h6>
+        <p>Réduire le temps de déploiement, éliminer les interventions manuelles, garantir la qualité du code à chaque commit et sécuriser les images Docker avant mise en production.</p>
+      </div>
+      <div class="doc-card">
+        <h6>🛠️ Stack technique</h6>
+        <p>GitLab CI/CD, Docker, Kubernetes, Trivy (scan de vulnérabilités), Snyk, pytest (tests unitaires), Registry GitLab.</p>
+      </div>
+      <div class="doc-card">
+        <h6>👤 Mon rôle</h6>
+        <p>Conception de l'architecture CI/CD, rédaction du fichier .gitlab-ci.yml, mise en place des stages, configuration des runners GitLab et intégration des outils de sécurité.</p>
+      </div>
+    </div>
+
+    <h4 class="section-label">// Pipeline GitLab CI/CD — Vue d'ensemble</h4>
+    <div class="pipeline-view">
       <div class="pl-topbar">
         <span class="pl-logo">⬡</span>
         <span class="pl-breadcrumb">thales / <span>app-microservices</span> / Pipelines / <span>#4721</span></span>
@@ -391,42 +254,28 @@
       </div>
     </div>
 
-    <!-- ★ NOUVEAU : Capture réelle GitLab MR -->
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Capture réelle — Merge Request feat/versioning → main</h4>
+    <div class="doc-bloc">
+      <h5>📄 Description des stages</h5>
+      <ul>
+        <li><strong>Build :</strong> Construction de l'image Docker et push vers le GitLab Container Registry, taguée avec le SHA du commit pour une traçabilité complète.</li>
+        <li><strong>Test :</strong> Exécution des tests unitaires avec pytest et mesure de la couverture de code. Les tests d'intégration vérifient les appels inter-services.</li>
+        <li><strong>Security :</strong> Scan de l'image Docker avec Trivy pour détecter les vulnérabilités CVE. Le pipeline échoue automatiquement si une vulnérabilité critique est détectée.</li>
+        <li><strong>Staging :</strong> Déploiement automatique sur l'environnement de staging via kubectl set image. Vérification du rollout avant de continuer.</li>
+        <li><strong>Production :</strong> Déploiement manuel déclenché par validation humaine (when: manual), uniquement sur la branche main. Garantit un contrôle avant chaque mise en production.</li>
+      </ul>
+    </div>
+
+    <h4 class="section-label">// Capture réelle — Merge Request feat/versioning → main</h4>
     <div class="real-screenshot-wrapper" onclick="openLightbox('projects/assets/screenshots/gitlab-mr-versioning.png')">
-      <img
-        src="projects/assets/screenshots/gitlab-mr-versioning.png"
-        alt="Merge Request GitLab feat/versioning merged into main — Thales"
-        loading="lazy"
-      />
+      <img src="projects/assets/screenshots/gitlab-mr-versioning.png"
+        alt="Merge Request GitLab feat/versioning merged into main — Thales" loading="lazy" />
       <div class="screenshot-overlay">
         <span>feat/versioning merged into main · 45 commits · Pipeline #7998393</span>
         <span class="badge-real">✓ Capture réelle</span>
       </div>
     </div>
 
-    <!-- ★ NOUVEAU : Présentations téléchargeables -->
-    <div class="pptx-group">
-      <div class="pptx-group-title">Présentations associées</div>
-      <div class="pptx-row">
-        <a class="pptx-btn download" href="projects/assets/presentations/Docker_Introduction_DevOps.pptx" download>
-          <span class="pptx-icon">🐳</span>
-          <div class="pptx-info">
-            <span class="pptx-label">Introduction à Docker</span>
-            <span class="pptx-sub">Télécharger .pptx</span>
-          </div>
-        </a>
-        <a class="pptx-btn download" href="projects/assets/presentations/demo_snyk.pptx" download>
-          <span class="pptx-icon">🔒</span>
-          <div class="pptx-info">
-            <span class="pptx-label">Demo Snyk — Sécurité</span>
-            <span class="pptx-sub">Télécharger .pptx</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Extrait .gitlab-ci.yml</h4>
+    <h4 class="section-label">// Extrait .gitlab-ci.yml</h4>
     <div class="code-block">
 <pre><code>stages: [build, test, security, deploy-staging, deploy-prod]
 
@@ -442,6 +291,11 @@ unit-tests:
   script: pytest tests/ -v --cov=app
   coverage: '/TOTAL.+?(\d+\%)/'
 
+trivy-scan:
+  stage: security
+  script:
+    - trivy image --exit-code 1 --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
 deploy-prod:
   stage: deploy-prod
   script:
@@ -451,7 +305,27 @@ deploy-prod:
   only: [main]</code></pre>
     </div>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Résultats obtenus</h4>
+    <div class="pptx-group">
+      <div class="pptx-group-title">Présentations associées</div>
+      <div class="pptx-row">
+        <a class="pptx-btn download" href="projects/assets/presentations/Docker_Introduction_DevOps.pptx" download>
+          <span class="pptx-icon">🐳</span>
+          <div class="pptx-info">
+            <span class="pptx-label">Introduction à Docker</span>
+            <span class="pptx-sub">Télécharger .pptx</span>
+          </div>
+        </a>
+        <a class="pptx-btn download" href="projects/assets/presentations/demo_snyk.pptx" download>
+          <span class="pptx-icon">🔒</span>
+          <div class="pptx-info">
+            <span class="pptx-label">Demo Snyk — Analyse de sécurité</span>
+            <span class="pptx-sub">Télécharger .pptx</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <h4 class="section-label">// Résultats & Bénéfices obtenus</h4>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:10px;">
       <div class="stat-card" style="background:rgba(26,115,255,0.06);border:1px solid rgba(26,115,255,0.15);border-radius:12px;padding:16px;text-align:center;">
         <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">-85%</div>
@@ -465,10 +339,26 @@ deploy-prod:
         <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">0</div>
         <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Interruption de service</div>
       </div>
+      <div class="stat-card" style="background:rgba(26,115,255,0.06);border:1px solid rgba(26,115,255,0.15);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--neon-2);">5 stages</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Pipeline automatisé</div>
+      </div>
+    </div>
+
+    <div class="doc-bloc" style="margin-top:18px;border-left-color:#a78bfa;">
+      <h5>💡 Compétences développées</h5>
+      <ul>
+        <li>Maîtrise de GitLab CI/CD : rédaction de pipelines multi-stages, gestion des runners, variables d'environnement sécurisées.</li>
+        <li>Conteneurisation Docker : optimisation des Dockerfiles (multi-stage build), gestion du registry privé.</li>
+        <li>Sécurité DevSecOps : intégration de Trivy et Snyk pour le scan de vulnérabilités dans le pipeline.</li>
+        <li>Déploiement Kubernetes : rolling updates, gestion des namespaces staging/production.</li>
+      </ul>
+    </div>
+    <div class="chips" style="margin-top:14px;">
+      <span class="chip">GitLab CI/CD</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Trivy</span><span class="chip">Snyk</span><span class="chip">pytest</span><span class="chip">DevSecOps</span>
     </div>
   </div>
 
-  <!-- Projet 2 : Kubernetes -->
   <div class="project-full">
     <div class="proj-meta">
       <span class="tag">DevOps</span>
@@ -477,14 +367,30 @@ deploy-prod:
       <span class="tag" style="background:rgba(10,240,255,0.08);color:var(--neon-2);border-color:rgba(10,240,255,0.2);">Cloud</span>
     </div>
     <h3>☸️ Orchestration Kubernetes — Déploiement multi-environnements</h3>
-    <p>Mise en place et gestion d'environnements Kubernetes (staging & production) pour le déploiement d'applications conteneurisées. Implémentation du rolling update, health checks, resource limits et autoscaling horizontal.</p>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Dashboard Kubernetes — État des pods</h4>
+    <div class="doc-bloc">
+      <h5>📋 Contexte & Problématique</h5>
+      <p>Dans le cadre de la conteneurisation des applications Thales, il était nécessaire d'orchestrer les déploiements sur plusieurs environnements (staging et production) avec des garanties de disponibilité et de montée en charge. J'ai mis en place une architecture Kubernetes complète couvrant l'ensemble des ressources nécessaires.</p>
+    </div>
 
-    <div class="fake-k8s">
-      <div class="k8s-topbar">
-        <span>☸ Kubernetes Dashboard — namespace: production</span>
+    <div class="doc-grid">
+      <div class="doc-card">
+        <h6>🎯 Objectifs</h6>
+        <p>Garantir la haute disponibilité des applications, automatiser le scaling horizontal, assurer les mises à jour sans interruption de service et monitorer l'état des pods en temps réel.</p>
       </div>
+      <div class="doc-card">
+        <h6>🛠️ Ressources déployées</h6>
+        <p>Deployment, Service (ClusterIP / NodePort), Ingress (nginx), ConfigMap, Secret, HorizontalPodAutoscaler (HPA), ResourceQuota par namespace.</p>
+      </div>
+      <div class="doc-card">
+        <h6>👤 Mon rôle</h6>
+        <p>Rédaction des manifestes YAML, configuration des namespaces, mise en place du rolling update, configuration des health checks (liveness & readiness probes) et tests de montée en charge.</p>
+      </div>
+    </div>
+
+    <h4 class="section-label">// État des pods — Namespace production</h4>
+    <div class="k8s-view">
+      <div class="k8s-topbar"><span>☸ Kubernetes Dashboard — namespace: production</span></div>
       <div class="k8s-body">
         <table class="k8s-table">
           <thead>
@@ -501,12 +407,21 @@ deploy-prod:
       </div>
     </div>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Commandes kubectl utilisées</h4>
-    <div class="fake-terminal">
+    <div class="doc-bloc">
+      <h5>📄 Architecture Kubernetes mise en place</h5>
+      <ul>
+        <li><strong>Deployment :</strong> 3 réplicas avec stratégie RollingUpdate (maxSurge: 1, maxUnavailable: 0) pour garantir la continuité de service lors des mises à jour.</li>
+        <li><strong>Service :</strong> Exposition interne via ClusterIP, accès externe via Ingress nginx avec terminaison TLS.</li>
+        <li><strong>HPA :</strong> Autoscaling horizontal configuré entre 2 et 10 réplicas selon la charge CPU (seuil à 70%).</li>
+        <li><strong>ConfigMap & Secret :</strong> Externalisation de la configuration applicative et gestion sécurisée des credentials.</li>
+        <li><strong>Probes :</strong> Liveness probe sur /health et readiness probe sur /ready pour garantir que seuls les pods sains reçoivent du trafic.</li>
+      </ul>
+    </div>
+
+    <h4 class="section-label">// Commandes kubectl — Déploiement et monitoring</h4>
+    <div class="term-view">
       <div class="term-bar">
-        <div class="term-dot red"></div>
-        <div class="term-dot yellow"></div>
-        <div class="term-dot green"></div>
+        <div class="term-dot red"></div><div class="term-dot yellow"></div><div class="term-dot green"></div>
         <span class="term-title">ilhan@thales-devops — bash</span>
       </div>
       <pre><code><span style="color:#4ade80">ilhan@devops</span><span style="color:#8b949e">:</span><span style="color:#58a6ff">~/thales-app</span><span style="color:#8b949e">$</span> kubectl get pods -n production
@@ -527,12 +442,19 @@ thales-app-7d4b9c-mn8r3      38m          121Mi
 thales-app-7d4b9c-pl5t7      52m          134Mi</code></pre>
     </div>
 
+    <div class="doc-bloc" style="border-left-color:#a78bfa;">
+      <h5>💡 Compétences développées</h5>
+      <ul>
+        <li>Rédaction et organisation de manifestes Kubernetes (Deployment, Service, Ingress, HPA, ConfigMap, Secret).</li>
+        <li>Gestion des namespaces et des contextes kubectl pour multi-environnements.</li>
+        <li>Mise en place de stratégies de déploiement sans interruption (RollingUpdate).</li>
+        <li>Monitoring des ressources via kubectl top et intégration avec les outils de supervision.</li>
+      </ul>
+    </div>
     <div class="chips" style="margin-top:14px;">
-      <span class="chip">Deployment</span><span class="chip">Service</span><span class="chip">Ingress</span><span class="chip">ConfigMap</span><span class="chip">HPA</span><span class="chip">Rolling Update</span>
+      <span class="chip">Deployment</span><span class="chip">Service</span><span class="chip">Ingress</span><span class="chip">ConfigMap</span><span class="chip">HPA</span><span class="chip">Rolling Update</span><span class="chip">Liveness Probe</span>
     </div>
   </div>
-
-  <!-- ───── PROJETS BTS ───── -->
   <div class="proj-section-header school" style="margin-top:32px;">
     <div class="psh-icon">🎓</div>
     <div>
@@ -541,7 +463,6 @@ thales-app-7d4b9c-pl5t7      52m          134Mi</code></pre>
     </div>
   </div>
 
-  <!-- Projet BTS 1 : Infrastructure Réseau -->
   <div class="project-full school-proj">
     <div class="proj-meta">
       <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Réseau</span>
@@ -549,11 +470,30 @@ thales-app-7d4b9c-pl5t7      52m          134Mi</code></pre>
       <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Active Directory</span>
     </div>
     <h3>🌐 Infrastructure Réseau Sécurisée avec Active Directory</h3>
-    <p>Conception et déploiement d'une architecture réseau segmentée pour une PME fictive de 50 utilisateurs. Mise en place d'un domaine Active Directory, segmentation VLAN, serveurs DHCP/DNS et stratégies de sécurité GPO.</p>
+
+    <div class="doc-bloc">
+      <h5>📋 Contexte & Problématique</h5>
+      <p>Dans le cadre du BTS SIO, ce projet consistait à concevoir et déployer une infrastructure réseau complète pour une PME fictive de 50 utilisateurs. L'objectif était de mettre en place un environnement Windows Server avec Active Directory, segmenté en VLANs, avec des politiques de sécurité GPO adaptées à chaque profil utilisateur.</p>
+    </div>
+
+    <div class="doc-grid">
+      <div class="doc-card">
+        <h6>🎯 Objectifs</h6>
+        <p>Centraliser l'authentification, segmenter le réseau par VLAN, appliquer des stratégies de sécurité GPO et assurer les services DHCP/DNS pour l'ensemble du parc.</p>
+      </div>
+      <div class="doc-card">
+        <h6>🛠️ Environnement</h6>
+        <p>VirtualBox, Windows Server 2022 (Contrôleur de domaine), Windows 10/11 (postes clients), routeur Cisco inter-VLAN, commutateur manageable.</p>
+      </div>
+      <div class="doc-card">
+        <h6>👤 Mon rôle</h6>
+        <p>Conception du plan d'adressage IP, installation et configuration du serveur AD DS, création de l'arborescence OU, déploiement des GPO et tests de validation.</p>
+      </div>
+    </div>
 
     <div class="two-col" style="gap:16px;margin:16px 0;">
       <div>
-        <h4 style="color:var(--neon-2);font-size:0.88rem;margin:0 0 10px;font-family:'JetBrains Mono',monospace;">// Architecture réseau</h4>
+        <h4 class="section-label">// Plan d'adressage réseau</h4>
         <div class="code-block" style="font-size:0.75rem;">
 <pre><code>Réseau : 192.168.0.0/24
 
@@ -574,8 +514,8 @@ Routeur inter-VLAN : 192.168.0.1 (Cisco)</code></pre>
         </div>
       </div>
       <div>
-        <h4 style="color:var(--neon-2);font-size:0.88rem;margin:0 0 10px;font-family:'JetBrains Mono',monospace;">// GPO déployées</h4>
-        <div class="fake-terminal">
+        <h4 class="section-label">// GPO déployées</h4>
+        <div class="term-view">
           <div class="term-bar">
             <div class="term-dot red"></div><div class="term-dot yellow"></div><div class="term-dot green"></div>
             <span class="term-title">Windows Server — Group Policy Management</span>
@@ -594,27 +534,63 @@ Routeur inter-VLAN : 192.168.0.1 (Cisco)</code></pre>
       </div>
     </div>
 
+    <div class="doc-bloc">
+      <h5>📄 Détail des composants déployés</h5>
+      <ul>
+        <li><strong>Active Directory DS :</strong> Création du domaine pme.local, arborescence d'unités organisationnelles (OU) par service (Direction, Comptabilité, Informatique, RH), groupes de sécurité et délégation d'administration.</li>
+        <li><strong>DHCP :</strong> Serveur DHCP configuré avec des plages d'adresses par VLAN, réservations statiques pour les serveurs et exclusions pour les équipements réseau.</li>
+        <li><strong>DNS :</strong> Zone de recherche directe et inverse pour le domaine interne, redirecteurs configurés vers les DNS publics (8.8.8.8) pour la résolution externe.</li>
+        <li><strong>GPO :</strong> 8 stratégies de groupe déployées couvrant la sécurité des mots de passe, les restrictions logicielles et la redirection de dossiers.</li>
+        <li><strong>Segmentation VLAN :</strong> 3 VLANs configurés sur le commutateur et le routeur Cisco pour isoler les flux Administration, Utilisateurs et DMZ.</li>
+      </ul>
+    </div>
+
+    <div class="doc-bloc" style="border-left-color:#a78bfa;">
+      <h5>💡 Compétences développées</h5>
+      <ul>
+        <li>Installation et configuration d'un contrôleur de domaine Active Directory sous Windows Server 2022.</li>
+        <li>Conception d'un plan d'adressage IP et configuration inter-VLAN sur équipements Cisco.</li>
+        <li>Création et déploiement de GPO pour la sécurisation des postes utilisateurs.</li>
+        <li>Administration des services réseau : DHCP, DNS, partages NTFS avec gestion des droits.</li>
+      </ul>
+    </div>
     <div class="chips">
-      <span class="chip">Windows Server 2022</span><span class="chip">Active Directory</span><span class="chip">VLAN</span><span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">GPO</span><span class="chip">VirtualBox</span>
+      <span class="chip">Windows Server 2022</span><span class="chip">Active Directory</span><span class="chip">VLAN</span><span class="chip">DHCP</span><span class="chip">DNS</span><span class="chip">GPO</span><span class="chip">VirtualBox</span><span class="chip">Cisco</span>
     </div>
   </div>
 
-  <!-- Projet BTS 2 : GLPI -->
   <div class="project-full school-proj">
     <div class="proj-meta">
       <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Système</span>
       <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">GLPI</span>
       <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">Helpdesk</span>
+      <span class="tag" style="background:rgba(123,79,255,0.1);color:#a78bfa;border-color:rgba(123,79,255,0.2);">ITSM</span>
     </div>
     <h3>🖥️ Gestion de Parc Informatique avec GLPI</h3>
-    <p>Déploiement et configuration d'une solution ITSM (IT Service Management) GLPI pour la gestion complète du parc informatique d'une entreprise fictive : inventaire matériel, gestion des tickets incidents et suivi des contrats de maintenance.</p>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Interface GLPI — Gestion des tickets</h4>
+    <div class="doc-bloc">
+      <h5>📋 Contexte & Problématique</h5>
+      <p>Ce projet visait à déployer une solution ITSM open source pour centraliser la gestion du parc informatique d'une entreprise fictive. Sans outil centralisé, le suivi des incidents, l'inventaire matériel et la gestion des contrats étaient réalisés sur des fichiers Excel épars, rendant toute intervention difficile à tracer.</p>
+    </div>
 
-    <div class="fake-glpi">
-      <div class="glpi-topbar">
-        <span>🖥 GLPI — Gestion du Parc Informatique v10.0</span>
+    <div class="doc-grid">
+      <div class="doc-card">
+        <h6>🎯 Objectifs</h6>
+        <p>Centraliser l'inventaire matériel et logiciel, mettre en place un système de tickets pour le support utilisateur, et assurer le suivi des contrats de maintenance.</p>
       </div>
+      <div class="doc-card">
+        <h6>🛠️ Stack technique</h6>
+        <p>GLPI 10, FusionInventory (agent d'inventaire automatique), serveur Apache/MySQL sous Debian, intégration LDAP avec Active Directory.</p>
+      </div>
+      <div class="doc-card">
+        <h6>👤 Mon rôle</h6>
+        <p>Installation du serveur GLPI, configuration de FusionInventory, création des profils utilisateurs, paramétrage des SLA et formation des utilisateurs à l'outil.</p>
+      </div>
+    </div>
+
+    <h4 class="section-label">// Interface GLPI — Gestion des tickets</h4>
+    <div class="glpi-view">
+      <div class="glpi-topbar"><span>🖥 GLPI — Gestion du Parc Informatique v10.0</span></div>
       <div class="glpi-body">
         <div class="glpi-breadcrumb">Accueil > Assistance > Tickets</div>
         <div class="glpi-title">📋 Liste des tickets — 12 tickets ouverts</div>
@@ -633,7 +609,18 @@ Routeur inter-VLAN : 192.168.0.1 (Cisco)</code></pre>
       </div>
     </div>
 
-    <h4 style="color:var(--neon-2);font-size:0.88rem;margin:16px 0 8px;font-family:'JetBrains Mono',monospace;">// Inventaire matériel géré</h4>
+    <div class="doc-bloc">
+      <h5>📄 Fonctionnalités déployées</h5>
+      <ul>
+        <li><strong>Inventaire automatique :</strong> Agent FusionInventory déployé sur les postes Windows via GPO pour remonter automatiquement les informations matérielles et logicielles dans GLPI.</li>
+        <li><strong>Gestion des tickets :</strong> Workflow de traitement des incidents avec escalade, assignation aux techniciens et historique complet des interventions.</li>
+        <li><strong>SLA :</strong> Niveaux de service avec alertes automatiques (ticket haute priorité → intervention sous 4h).</li>
+        <li><strong>Intégration LDAP :</strong> Authentification des utilisateurs via l'Active Directory, synchronisation automatique des comptes.</li>
+        <li><strong>Gestion des contrats :</strong> Suivi des garanties matérielles, contrats de maintenance et alertes d'expiration.</li>
+      </ul>
+    </div>
+
+    <h4 class="section-label">// Inventaire matériel géré</h4>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0;">
       <div style="background:rgba(123,79,255,0.06);border:1px solid rgba(123,79,255,0.15);border-radius:10px;padding:14px;text-align:center;">
         <div style="font-size:1.6rem;font-weight:800;color:#a78bfa;font-family:'Syne',sans-serif;">47</div>
@@ -653,8 +640,17 @@ Routeur inter-VLAN : 192.168.0.1 (Cisco)</code></pre>
       </div>
     </div>
 
+    <div class="doc-bloc" style="border-left-color:#a78bfa;">
+      <h5>💡 Compétences développées</h5>
+      <ul>
+        <li>Déploiement d'une solution ITSM open source (GLPI) sur serveur Linux (Apache, MySQL, PHP).</li>
+        <li>Configuration de FusionInventory pour l'inventaire automatique du parc.</li>
+        <li>Intégration LDAP pour l'authentification centralisée via Active Directory.</li>
+        <li>Gestion des niveaux de service (SLA) et mise en place de workflows de traitement des incidents.</li>
+      </ul>
+    </div>
     <div class="chips" style="margin-top:14px;">
-      <span class="chip">GLPI 10</span><span class="chip">Windows Server</span><span class="chip">NTFS</span><span class="chip">VirtualBox</span><span class="chip">FusionInventory</span>
+      <span class="chip">GLPI 10</span><span class="chip">FusionInventory</span><span class="chip">Windows Server</span><span class="chip">NTFS</span><span class="chip">VirtualBox</span><span class="chip">LDAP</span><span class="chip">Apache</span><span class="chip">MySQL</span>
     </div>
   </div>
 
